@@ -1486,9 +1486,9 @@ export default class TransactionController extends EventEmitter {
 
     // add r,s,v values for provider request purposes see createMetamaskMiddleware
     // and JSON rpc standard for further explanation
-    txMeta.r = signedEthTx.r.toString(16);
-    txMeta.s = signedEthTx.s.toString(16);
-    txMeta.v = signedEthTx.v.toString(16);
+    txMeta.r = addHexPrefix(signedEthTx.r.toString(16));
+    txMeta.s = addHexPrefix(signedEthTx.s.toString(16));
+    txMeta.v = addHexPrefix(signedEthTx.v.toString(16));
 
     this.txStateManager.updateTransaction(
       txMeta,
