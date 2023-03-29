@@ -3953,6 +3953,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@metamask/eth-snap-keyring@git+git@work.github.com:MetaMask/eth-snap-keyring.git#e438d016d4b25f9731e7600f7eb444988d5a3fd9":
+  version: 0.1.0
+  resolution: "@metamask/eth-snap-keyring@git+git@work.github.com:MetaMask/eth-snap-keyring.git#commit=e438d016d4b25f9731e7600f7eb444988d5a3fd9"
+  dependencies:
+    "@metamask/snaps-utils": ^0.31.0
+    "@metamask/utils": ^5.0.0
+    "@types/uuid": ^9.0.1
+    eth-rpc-errors: ^4.0.3
+    uuid: ^9.0.0
+  checksum: 48fa9c92365ee9f8204d35ba4dc5cbc26e2508543512eb4c5ac467b2faa3a8cf31f8700b250909446228fbb3b5acfb04de21cd51b8a53e6a4356433d586d0fe1
+  languageName: node
+  linkType: hard
+
 "@metamask/eth-token-tracker@npm:^4.0.0":
   version: 4.0.0
   resolution: "@metamask/eth-token-tracker@npm:4.0.0"
@@ -4487,7 +4500,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/utils@npm:^3.0.1, @metamask/utils@npm:^3.0.3, @metamask/utils@npm:^3.3.0, @metamask/utils@npm:^3.3.1, @metamask/utils@npm:^3.4.0, @metamask/utils@npm:^3.4.1, @metamask/utils@npm:^3.6.0":
+"@metamask/utils@npm:^3.0.1, @metamask/utils@npm:^3.0.3, @metamask/utils@npm:^3.3.0, @metamask/utils@npm:^3.3.1, @metamask/utils@npm:^3.4.1":
   version: 3.6.0
   resolution: "@metamask/utils@npm:3.6.0"
   dependencies:
@@ -7855,6 +7868,13 @@ __metadata:
   version: 8.3.0
   resolution: "@types/uuid@npm:8.3.0"
   checksum: 0f46b15020b9c252473fb327a6491fd7d238c7b5bbaebd32195a0de178db040f6abb96902507ba25dd4a673cdd9cc28b8880512dba54561e8bc60d8f326c1e30
+  languageName: node
+  linkType: hard
+
+"@types/uuid@npm:^9.0.1":
+  version: 9.0.1
+  resolution: "@types/uuid@npm:9.0.1"
+  checksum: c472b8a77cbeded4bc529220b8611afa39bd64677f507838f8083d8aac8033b1f88cb9ddaa2f8589e0dcd2317291d0f6e1379f82d5ceebd6f74f3b4825288e00
   languageName: node
   linkType: hard
 
@@ -24283,6 +24303,7 @@ __metadata:
     "@metamask/eth-json-rpc-provider": ^1.0.0
     "@metamask/eth-keyring-controller": ^10.0.1
     "@metamask/eth-ledger-bridge-keyring": ^0.13.0
+    "@metamask/eth-snap-keyring": "git+git@work.github.com:MetaMask/eth-snap-keyring.git#e438d016d4b25f9731e7600f7eb444988d5a3fd9"
     "@metamask/eth-token-tracker": ^4.0.0
     "@metamask/etherscan-link": ^2.2.0
     "@metamask/forwarder": ^1.1.0
