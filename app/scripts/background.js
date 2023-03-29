@@ -576,6 +576,7 @@ export function setupController(initState, initLangCode, overrides) {
         overrides?.getPortStream?.(remotePort) || new PortStream(remotePort);
       // communication with popup
       controller.isClientOpen = true;
+      controller.setupTrustedCommunication(portStream, remotePort.sender);
       if (isManifestV3) {
         // If we get a WORKER_KEEP_ALIVE message, we respond with an ACK
         remotePort.onMessage.addListener((message) => {
@@ -586,17 +587,6 @@ export function setupController(initState, initLangCode, overrides) {
         });
       }
       const id = `${remotePort.sender?.tab?.id}-${processName}`;
-      // const connection = openMetamaskConnections.get(id);
-      // console.log(`>>>>> id ${id}, connection ${connection}`);
-      // if (Boolean(connection) === false) {
-      //   console.log(`>>>>>CONNECTING`);
-      //   controller.setupTrustedCommunication(portStream, remotePort.sender);
-      //   openMetamaskConnections.set(id, true);
-      // } else {
-      //   console.log(`>>>>>CRASH`);
-      //   throw new Error('CRASH');
-      // }
-      controller.setupTrustedCommunication(portStream, remotePort.sender);
       if (processName === ENVIRONMENT_TYPE_POPUP) {
         popupIsOpen = true;
         endOfStream(portStream, () => {
@@ -610,7 +600,6 @@ export function setupController(initState, initLangCode, overrides) {
 
       if (processName === ENVIRONMENT_TYPE_NOTIFICATION) {
         notificationIsOpen = true;
-
         endOfStream(portStream, () => {
           openMetamaskConnections.set(id, false);
           notificationIsOpen = false;
