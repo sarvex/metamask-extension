@@ -36,7 +36,7 @@ import createJsonRpcClient from './createJsonRpcClient';
  * @property {string} [nickname] - Personalized network name.
  */
 
-const env = process.env.METAMASK_ENV;
+const env = process.env.METAMASK_ENVIRONMENT;
 const fetchWithTimeout = getFetchWithTimeout();
 
 let defaultProviderConfigOpts;
@@ -47,7 +47,7 @@ if (process.env.IN_TEST) {
     chainId: '0x539',
     nickname: 'Localhost 8545',
   };
-} else if (process.env.METAMASK_DEBUG || env === 'test') {
+} else if (process.env.METAMASK_DEBUG || env === 'testing') {
   defaultProviderConfigOpts = {
     type: NETWORK_TYPES.GOERLI,
     chainId: CHAIN_IDS.GOERLI,

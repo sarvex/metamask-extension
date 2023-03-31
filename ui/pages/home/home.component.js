@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, Route } from 'react-router-dom';
-///: BEGIN:ONLY_INCLUDE_IN(main)
+///: BEGIN:ONLY_INCLUDE_IN(build-main)
 import {
   EVENT,
   EVENT_NAMES,
@@ -55,13 +55,13 @@ import {
 } from '../../helpers/constants/routes';
 import ZENDESK_URLS from '../../helpers/constants/zendesk-url';
 import OpenSeaWhatsNewPopover from '../../components/app/open-sea-whats-new-popover/open-sea-whats-new-popover';
-///: BEGIN:ONLY_INCLUDE_IN(main)
+///: BEGIN:ONLY_INCLUDE_IN(build-main)
 import { SUPPORT_LINK } from '../../../shared/lib/ui-utils';
 ///: END:ONLY_INCLUDE_IN
-///: BEGIN:ONLY_INCLUDE_IN(beta)
+///: BEGIN:ONLY_INCLUDE_IN(build-beta)
 import BetaHomeFooter from './beta/beta-home-footer.component';
 ///: END:ONLY_INCLUDE_IN
-///: BEGIN:ONLY_INCLUDE_IN(flask)
+///: BEGIN:ONLY_INCLUDE_IN(build-flask)
 import FlaskHomeFooter from './flask/flask-home-footer.component';
 ///: END:ONLY_INCLUDE_IN
 
@@ -113,7 +113,7 @@ export default class Home extends PureComponent {
     showWhatsNewPopup: PropTypes.bool.isRequired,
     hideWhatsNewPopup: PropTypes.func.isRequired,
     announcementsToShow: PropTypes.bool.isRequired,
-    ///: BEGIN:ONLY_INCLUDE_IN(flask)
+    ///: BEGIN:ONLY_INCLUDE_IN(snaps)
     errorsToShow: PropTypes.object.isRequired,
     shouldShowErrors: PropTypes.bool.isRequired,
     removeSnapError: PropTypes.func.isRequired,
@@ -260,7 +260,7 @@ export default class Home extends PureComponent {
       setWeb3ShimUsageAlertDismissed,
       originOfCurrentTab,
       disableWeb3ShimUsageAlert,
-      ///: BEGIN:ONLY_INCLUDE_IN(flask)
+      ///: BEGIN:ONLY_INCLUDE_IN(snaps)
       removeSnapError,
       errorsToShow,
       shouldShowErrors,
@@ -289,7 +289,7 @@ export default class Home extends PureComponent {
     return (
       <MultipleNotifications>
         {
-          ///: BEGIN:ONLY_INCLUDE_IN(flask)
+          ///: BEGIN:ONLY_INCLUDE_IN(snaps)
           shouldShowErrors
             ? Object.entries(errorsToShow).map(([errorId, error]) => {
                 return (
@@ -691,7 +691,7 @@ export default class Home extends PureComponent {
             </Tabs>
             <div className="home__support">
               {
-                ///: BEGIN:ONLY_INCLUDE_IN(main)
+                ///: BEGIN:ONLY_INCLUDE_IN(build-main)
                 t('needHelp', [
                   <a
                     href={SUPPORT_LINK}
@@ -721,12 +721,12 @@ export default class Home extends PureComponent {
                 ///: END:ONLY_INCLUDE_IN
               }
               {
-                ///: BEGIN:ONLY_INCLUDE_IN(beta)
+                ///: BEGIN:ONLY_INCLUDE_IN(build-beta)
                 <BetaHomeFooter />
                 ///: END:ONLY_INCLUDE_IN
               }
               {
-                ///: BEGIN:ONLY_INCLUDE_IN(flask)
+                ///: BEGIN:ONLY_INCLUDE_IN(build-flask)
                 <FlaskHomeFooter />
                 ///: END:ONLY_INCLUDE_IN
               }

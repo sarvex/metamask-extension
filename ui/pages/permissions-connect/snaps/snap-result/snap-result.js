@@ -18,8 +18,8 @@ import {
 } from '../../../../helpers/constants/design-system';
 import { Text } from '../../../../components/component-library';
 import PulseLoader from '../../../../components/ui/pulse-loader/pulse-loader';
-import InstallError from '../../../../components/app/flask/install-error/install-error';
-import SnapsAuthorshipPill from '../../../../components/app/flask/snaps-authorship-pill/snaps-authorship-pill';
+import InstallError from '../../../../components/app/snaps/install-error/install-error';
+import SnapsAuthorshipPill from '../../../../components/app/snaps/snaps-authorship-pill/snaps-authorship-pill';
 import { getSnapName } from '../../../../helpers/utils/util';
 
 export default function SnapResult({

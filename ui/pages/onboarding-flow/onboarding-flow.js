@@ -3,7 +3,7 @@ import { Switch, Route, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Unlock from '../unlock-page';
 import {
-  ///: BEGIN:ONLY_INCLUDE_IN(flask)
+  ///: BEGIN:ONLY_INCLUDE_IN(build-flask)
   ONBOARDING_EXPERIMENTAL_AREA,
   ///: END:ONLY_INCLUDE_IN
   ONBOARDING_CREATE_PASSWORD_ROUTE,
@@ -31,8 +31,8 @@ import { MetaMetricsContext } from '../../contexts/metametrics';
 import Button from '../../components/ui/button';
 import { useI18nContext } from '../../hooks/useI18nContext';
 import { EVENT_NAMES, EVENT } from '../../../shared/constants/metametrics';
-///: BEGIN:ONLY_INCLUDE_IN(flask)
-import ExperimentalArea from '../../components/app/flask/experimental-area';
+///: BEGIN:ONLY_INCLUDE_IN(build-flask)
+import ExperimentalArea from '../../components/app/snaps/experimental-area';
 ///: END:ONLY_INCLUDE_IN
 import OnboardingFlowSwitch from './onboarding-flow-switch/onboarding-flow-switch';
 import CreatePassword from './create-password/create-password';
@@ -167,7 +167,7 @@ export default function OnboardingFlow() {
             component={MetaMetricsComponent}
           />
           {
-            ///: BEGIN:ONLY_INCLUDE_IN(flask)
+            ///: BEGIN:ONLY_INCLUDE_IN(build-flask)
           }
           <Route
             path={ONBOARDING_EXPERIMENTAL_AREA}

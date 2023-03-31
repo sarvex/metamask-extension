@@ -30,7 +30,7 @@ export const mapStateToProps = (state) => {
     useNonceField,
     ledgerTransportType,
     dismissSeedBackUpReminder,
-    ///: BEGIN:ONLY_INCLUDE_IN(flask)
+    ///: BEGIN:ONLY_INCLUDE_IN(desktop)
     desktopEnabled,
     ///: END:ONLY_INCLUDE_IN
   } = metamask;
@@ -54,7 +54,7 @@ export const mapStateToProps = (state) => {
     dismissSeedBackUpReminder,
     userHasALedgerAccount,
     disabledRpcMethodPreferences,
-    ///: BEGIN:ONLY_INCLUDE_IN(flask)
+    ///: BEGIN:ONLY_INCLUDE_IN(desktop)
     desktopEnabled,
     ///: END:ONLY_INCLUDE_IN
   };

@@ -24,7 +24,7 @@ import {
 import { useI18nContext } from '../../hooks/useI18nContext';
 import { useOriginMetadata } from '../../hooks/useOriginMetadata';
 import {
-  ///: BEGIN:ONLY_INCLUDE_IN(flask)
+  ///: BEGIN:ONLY_INCLUDE_IN(snaps)
   getSnap,
   ///: END:ONLY_INCLUDE_IN
   getUnapprovedTemplatedConfirmations,
@@ -182,7 +182,7 @@ export default function ConfirmationPage({
 
   const [submitAlerts, setSubmitAlerts] = useState([]);
 
-  ///: BEGIN:ONLY_INCLUDE_IN(flask)
+  ///: BEGIN:ONLY_INCLUDE_IN(snaps)
   const snap = useSelector((state) =>
     getSnap(state, pendingConfirmation?.origin),
   );
@@ -200,7 +200,7 @@ export default function ConfirmationPage({
   ///: END:ONLY_INCLUDE_IN
 
   const INPUT_STATE_CONFIRMATIONS = [
-    ///: BEGIN:ONLY_INCLUDE_IN(flask)
+    ///: BEGIN:ONLY_INCLUDE_IN(snaps)
     MESSAGE_TYPE.SNAP_DIALOG_PROMPT,
     ///: END:ONLY_INCLUDE_IN
   ];
@@ -212,7 +212,7 @@ export default function ConfirmationPage({
     return pendingConfirmation
       ? getTemplateValues(
           {
-            ///: BEGIN:ONLY_INCLUDE_IN(flask)
+            ///: BEGIN:ONLY_INCLUDE_IN(snaps)
             snapName: isSnapDialog && proposedName,
             ///: END:ONLY_INCLUDE_IN
             ...pendingConfirmation,
@@ -228,7 +228,7 @@ export default function ConfirmationPage({
     t,
     dispatch,
     history,
-    ///: BEGIN:ONLY_INCLUDE_IN(flask)
+    ///: BEGIN:ONLY_INCLUDE_IN(snaps)
     isSnapDialog,
     proposedName,
     ///: END:ONLY_INCLUDE_IN

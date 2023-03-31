@@ -14,9 +14,9 @@ import {
   FRACTIONS,
   TextColor,
 } from '../../../../helpers/constants/design-system';
-import SnapsAuthorshipPill from '../../../../components/app/flask/snaps-authorship-pill';
+import SnapsAuthorshipPill from '../../../../components/app/snaps/snaps-authorship-pill';
 import Box from '../../../../components/ui/box';
-import SnapRemoveWarning from '../../../../components/app/flask/snap-remove-warning';
+import SnapRemoveWarning from '../../../../components/app/snaps/snap-remove-warning';
 import ToggleButton from '../../../../components/ui/toggle-button';
 import PermissionsConnectPermissionList from '../../../../components/app/permissions-connect-permission-list/permissions-connect-permission-list';
 import ConnectedSitesList from '../../../../components/app/connected-sites-list';
