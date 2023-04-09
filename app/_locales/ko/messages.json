@@ -695,10 +695,6 @@
     "message": "$1 계정은 어떤 사이트에도 연결되어 있지 않습니다.",
     "description": "$1 is the account name"
   },
-  "connectedSnapSites": {
-    "message": "$1 스냅이 이 사이트에 연결되어 있습니다. 이 사이트는 위에 나열된 접근 권한이 있습니다.",
-    "description": "$1 represents the name of the snap"
-  },
   "connecting": {
     "message": "연결 중..."
   },
@@ -3225,10 +3221,6 @@
   "settingsSearchMatchingNotFound": {
     "message": "검색 결과가 없습니다."
   },
-  "shorthandVersion": {
-    "message": "v$1",
-    "description": "$1 is replaced by a version string (e.g. 1.2.3)"
-  },
   "show": {
     "message": "보기"
   },
@@ -3301,14 +3293,6 @@
   },
   "smartTransaction": {
     "message": "스마트 트랜잭션"
-  },
-  "snapAccess": {
-    "message": "$1 스냅이 접근할 수 있는 대상:",
-    "description": "$1 represents the name of the snap"
-  },
-  "snapAdded": {
-    "message": "$1에 $2에서 추가됨",
-    "description": "$1 represents the date the snap was installed, $2 represents which origin installed the snap."
   },
   "snapContent": {
     "message": "콘텐츠 출처: $1",

@@ -764,10 +764,6 @@
     "message": "$1 is not connected to any sites.",
     "description": "$1 is the account name"
   },
-  "connectedSnapSites": {
-    "message": "$1 snap is connected to these sites. They have access to the permissions listed above.",
-    "description": "$1 represents the name of the snap"
-  },
   "connecting": {
     "message": "Connecting..."
   },
@@ -1302,6 +1298,12 @@
   },
   "enableSmartTransactions": {
     "message": "Enable smart transactions"
+  },
+  "enableSnap": {
+    "message": "Enable snap"
+  },
+  "enableSnapDescription": {
+    "message": "Your installed snap will only have access to its permissions and run if it’s enabled."
   },
   "enableToken": {
     "message": "enable $1",
@@ -3503,10 +3505,6 @@
   "settingsSearchMatchingNotFound": {
     "message": "No matching results found."
   },
-  "shorthandVersion": {
-    "message": "v$1",
-    "description": "$1 is replaced by a version string (e.g. 1.2.3)"
-  },
   "show": {
     "message": "Show"
   },
@@ -3580,14 +3578,6 @@
   "smartTransaction": {
     "message": "Smart transaction"
   },
-  "snapAccess": {
-    "message": "$1 snap has access to:",
-    "description": "$1 represents the name of the snap"
-  },
-  "snapAdded": {
-    "message": "Added on $1 from $2",
-    "description": "$1 represents the date the snap was installed, $2 represents which origin installed the snap."
-  },
   "snapContent": {
     "message": "This content is coming from $1",
     "description": "This is shown when a snap shows transaction insight information in the confirmation UI. $1 is a link to the snap's settings page with the link text being the name of the snap."
@@ -3643,6 +3633,10 @@
   "snapUpdateRequestsPermission": {
     "message": "$1 wants to update $2, which is requesting the following permissions. Make sure you trust the authors before you proceed.",
     "description": "$1 is the dApp origin requesting the snap and $2 is the snap name"
+  },
+  "snapVersionInfo": {
+    "message": "You installed $1 of $2 from $3 on $4.",
+    "description": "$1 represents snap version, $2 represents snap npm package name, $3 represents which origin installed the snap, $4 represents an installation date."
   },
   "snaps": {
     "message": "Snaps"

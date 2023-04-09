@@ -695,10 +695,6 @@
     "message": "$1 δεν είναι συνδεδεμένο με καμία τοποθεσία.",
     "description": "$1 is the account name"
   },
-  "connectedSnapSites": {
-    "message": "Το snap $1 συνδέεται με αυτούς τους ιστότοπους. Έχουν πρόσβαση στις παραπάνω άδειες.",
-    "description": "$1 represents the name of the snap"
-  },
   "connecting": {
     "message": "Σύνδεση..."
   },
@@ -3225,10 +3221,6 @@
   "settingsSearchMatchingNotFound": {
     "message": "Δε βρέθηκαν αποτελέσματα που να ταιριάζουν."
   },
-  "shorthandVersion": {
-    "message": "v$1",
-    "description": "$1 is replaced by a version string (e.g. 1.2.3)"
-  },
   "show": {
     "message": "Εμφάνιση"
   },
@@ -3301,14 +3293,6 @@
   },
   "smartTransaction": {
     "message": "Έξυπνη Συναλλαγή"
-  },
-  "snapAccess": {
-    "message": "Το snap $1 έχει πρόσβαση σε:",
-    "description": "$1 represents the name of the snap"
-  },
-  "snapAdded": {
-    "message": "Προστέθηκε στις $1 από $2",
-    "description": "$1 represents the date the snap was installed, $2 represents which origin installed the snap."
   },
   "snapContent": {
     "message": "Αυτό το περιεχόμενο προέρχεται από το $1",

@@ -695,10 +695,6 @@
     "message": "$1 herhangi bir siteye bağlanmamış.",
     "description": "$1 is the account name"
   },
-  "connectedSnapSites": {
-    "message": "$1 snap bu sitelere bağlı. Yukarıda listelenen izinlere erişimleri vardır.",
-    "description": "$1 represents the name of the snap"
-  },
   "connecting": {
     "message": "Bağlanıyor..."
   },
@@ -3225,10 +3221,6 @@
   "settingsSearchMatchingNotFound": {
     "message": "Eşleşen sonuç bulunamadı."
   },
-  "shorthandVersion": {
-    "message": "s$1",
-    "description": "$1 is replaced by a version string (e.g. 1.2.3)"
-  },
   "show": {
     "message": "Göster"
   },
@@ -3301,14 +3293,6 @@
   },
   "smartTransaction": {
     "message": "Akıllı işlem"
-  },
-  "snapAccess": {
-    "message": "$1 snap'in şunlara erişimi vardır:",
-    "description": "$1 represents the name of the snap"
-  },
-  "snapAdded": {
-    "message": "$1 tarihinde $2 alanından eklendi",
-    "description": "$1 represents the date the snap was installed, $2 represents which origin installed the snap."
   },
   "snapContent": {
     "message": "Bu içerik $1 kaynaklıdır",

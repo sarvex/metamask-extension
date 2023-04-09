@@ -695,10 +695,6 @@
     "message": "$1 किसी भी साइट से कनेक्ट नहीं है।",
     "description": "$1 is the account name"
   },
-  "connectedSnapSites": {
-    "message": "$1 स्नैप इन साइटों से जुड़ा है। वे ऊपर सूचीबद्ध अनुमतियों को एक्सेस कर सकती हैं।",
-    "description": "$1 represents the name of the snap"
-  },
   "connecting": {
     "message": "कनेक्ट किया जा रहा है..."
   },
@@ -3225,10 +3221,6 @@
   "settingsSearchMatchingNotFound": {
     "message": "कोई मेल खाने वाला परिणाम नहीं मिला।"
   },
-  "shorthandVersion": {
-    "message": "v$1",
-    "description": "$1 is replaced by a version string (e.g. 1.2.3)"
-  },
   "show": {
     "message": "दिखाएं"
   },
@@ -3301,14 +3293,6 @@
   },
   "smartTransaction": {
     "message": "स्मार्ट लेनदेन"
-  },
-  "snapAccess": {
-    "message": "$1 स्नैप को एक्सेस है:",
-    "description": "$1 represents the name of the snap"
-  },
-  "snapAdded": {
-    "message": "$2 से $1 जोड़ा गया",
-    "description": "$1 represents the date the snap was installed, $2 represents which origin installed the snap."
   },
   "snapContent": {
     "message": "यह सामग्री $1 से आ रही है",

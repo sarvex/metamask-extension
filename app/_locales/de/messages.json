@@ -695,10 +695,6 @@
     "message": "$1 ist mit keiner Site verbunden.",
     "description": "$1 is the account name"
   },
-  "connectedSnapSites": {
-    "message": "$1-Snap ist mit diesen Sites verbunden. Sie haben Zugriff auf die oben aufgeführten Berechtigungen.",
-    "description": "$1 represents the name of the snap"
-  },
   "connecting": {
     "message": "Verbinden..."
   },
@@ -3225,10 +3221,6 @@
   "settingsSearchMatchingNotFound": {
     "message": "Keine passenden Ergebnisse gefunden."
   },
-  "shorthandVersion": {
-    "message": "v$1",
-    "description": "$1 is replaced by a version string (e.g. 1.2.3)"
-  },
   "show": {
     "message": "Zeigen"
   },
@@ -3301,14 +3293,6 @@
   },
   "smartTransaction": {
     "message": "Intelligente Transaktionen"
-  },
-  "snapAccess": {
-    "message": "$1-Snap hat Zugriff auf:",
-    "description": "$1 represents the name of the snap"
-  },
-  "snapAdded": {
-    "message": "Am $1 von $2 hinzugefügt",
-    "description": "$1 represents the date the snap was installed, $2 represents which origin installed the snap."
   },
   "snapContent": {
     "message": "Diese Inhalte stammen von $1",

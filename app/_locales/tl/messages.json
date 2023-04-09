@@ -695,10 +695,6 @@
     "message": "Ang $1 ay hindi nakakonekta sa anumang site.",
     "description": "$1 is the account name"
   },
-  "connectedSnapSites": {
-    "message": "Ang $1 snap ay konektado sa mga site na ito. May access sila sa mga pahintulot na nakalista sa itaas.",
-    "description": "$1 represents the name of the snap"
-  },
   "connecting": {
     "message": "Kumokonekta..."
   },
@@ -3225,10 +3221,6 @@
   "settingsSearchMatchingNotFound": {
     "message": "Walang nakitang katugmang resulta."
   },
-  "shorthandVersion": {
-    "message": "v$1",
-    "description": "$1 is replaced by a version string (e.g. 1.2.3)"
-  },
   "show": {
     "message": "Ipakita"
   },
@@ -3301,14 +3293,6 @@
   },
   "smartTransaction": {
     "message": "Smart Transaction"
-  },
-  "snapAccess": {
-    "message": "Ang $1 snap ay may access sa:",
-    "description": "$1 represents the name of the snap"
-  },
-  "snapAdded": {
-    "message": "Idinagdag noong $1 mula sa $2",
-    "description": "$1 represents the date the snap was installed, $2 represents which origin installed the snap."
   },
   "snapContent": {
     "message": "Ang nilalamang ito ay nagmumula sa $1",

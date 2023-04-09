@@ -695,10 +695,6 @@
     "message": "$1 не подключен ни к каким сайтам.",
     "description": "$1 is the account name"
   },
-  "connectedSnapSites": {
-    "message": "Снап $1 подключен к этим сайтам. У них есть доступ к перечисленным выше разрешениям.",
-    "description": "$1 represents the name of the snap"
-  },
   "connecting": {
     "message": "Подключение..."
   },
@@ -3225,10 +3221,6 @@
   "settingsSearchMatchingNotFound": {
     "message": "Совпадений не найдено."
   },
-  "shorthandVersion": {
-    "message": "v$1",
-    "description": "$1 is replaced by a version string (e.g. 1.2.3)"
-  },
   "show": {
     "message": "Показать"
   },
@@ -3301,14 +3293,6 @@
   },
   "smartTransaction": {
     "message": "Смарт-транзакция"
-  },
-  "snapAccess": {
-    "message": "У снапа $1 есть доступ к:",
-    "description": "$1 represents the name of the snap"
-  },
-  "snapAdded": {
-    "message": "Добавлено на $1 из $2",
-    "description": "$1 represents the date the snap was installed, $2 represents which origin installed the snap."
   },
   "snapContent": {
     "message": "Этот контент поступает от $1",

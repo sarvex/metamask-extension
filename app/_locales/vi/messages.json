@@ -695,10 +695,6 @@
     "message": "$1 chưa được kết nối với bất kỳ trang web nào.",
     "description": "$1 is the account name"
   },
-  "connectedSnapSites": {
-    "message": "Snap $1 được kết nối với các trang web này. Các trang web này được phép sử dụng những quyền được liệt kê ở trên.",
-    "description": "$1 represents the name of the snap"
-  },
   "connecting": {
     "message": "Đang kết nối..."
   },
@@ -3225,10 +3221,6 @@
   "settingsSearchMatchingNotFound": {
     "message": "Không tìm thấy kết quả trùng khớp."
   },
-  "shorthandVersion": {
-    "message": "v$1",
-    "description": "$1 is replaced by a version string (e.g. 1.2.3)"
-  },
   "show": {
     "message": "Hiển thị"
   },
@@ -3301,14 +3293,6 @@
   },
   "smartTransaction": {
     "message": "Giao dịch thông minh"
-  },
-  "snapAccess": {
-    "message": "Snap $1 có quyền truy cập vào:",
-    "description": "$1 represents the name of the snap"
-  },
-  "snapAdded": {
-    "message": "Đã thêm vào $1 từ $2",
-    "description": "$1 represents the date the snap was installed, $2 represents which origin installed the snap."
   },
   "snapContent": {
     "message": "Nội dung này đến từ $1",

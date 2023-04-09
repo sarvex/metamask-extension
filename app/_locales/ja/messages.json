@@ -695,10 +695,6 @@
     "message": "$1はどのサイトとも接続されていません。",
     "description": "$1 is the account name"
   },
-  "connectedSnapSites": {
-    "message": "$1 スナップはこれらのサイトに接続されており、上記のパーミッションにアクセスできます。",
-    "description": "$1 represents the name of the snap"
-  },
   "connecting": {
     "message": "接続中..."
   },
@@ -3225,10 +3221,6 @@
   "settingsSearchMatchingNotFound": {
     "message": "一致する結果が見つかりませんでした。"
   },
-  "shorthandVersion": {
-    "message": "v$1",
-    "description": "$1 is replaced by a version string (e.g. 1.2.3)"
-  },
   "show": {
     "message": "表示"
   },
@@ -3301,14 +3293,6 @@
   },
   "smartTransaction": {
     "message": "スマートトランザクション"
-  },
-  "snapAccess": {
-    "message": "$1 スナップは次にアクセス可能です:",
-    "description": "$1 represents the name of the snap"
-  },
-  "snapAdded": {
-    "message": "$1 に $2 から追加",
-    "description": "$1 represents the date the snap was installed, $2 represents which origin installed the snap."
   },
   "snapContent": {
     "message": "このコンテンツは $1 からのものです",

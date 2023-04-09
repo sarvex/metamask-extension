@@ -6,14 +6,10 @@ import {
   WALLET_SNAP_PERMISSION_KEY,
 } from '@metamask/rpc-methods';
 import Button from '../../../../components/ui/button';
-import Typography from '../../../../components/ui/typography';
 import { useI18nContext } from '../../../../hooks/useI18nContext';
 import {
-  TypographyVariant,
-  TEXT_ALIGN,
-  FRACTIONS,
   TextColor,
-  BLOCK_SIZES,
+  TextVariant,
 } from '../../../../helpers/constants/design-system';
 import SnapAuthorship from '../../../../components/app/flask/snap-authorship';
 import Box from '../../../../components/ui/box';
@@ -37,7 +33,8 @@ import {
   getPermissionSubjects,
   getTargetSubjectMetadata,
 } from '../../../../selectors';
-import { formatDate } from '../../../../helpers/utils/util';
+import { formatDate, removeSnapIdPrefix } from '../../../../helpers/utils/util';
+import { Text } from '../../../../components/component-library';
 
 function ViewSnap() {
   const t = useI18nContext();
@@ -109,138 +106,120 @@ function ViewSnap() {
 
   const versionHistory = snap.versionHistory ?? [];
   const [firstInstall] = versionHistory;
+  const packageName = snap.id && removeSnapIdPrefix(snap.id);
 
   return (
-    <div className="view-snap">
-      <div className="settings-page__content-row">
-        <div className="view-snap__subheader">
-          <Typography
-            className="view-snap__title"
-            variant={TypographyVariant.H3}
-            boxProps={{ textAlign: TEXT_ALIGN.CENTER }}
-          >
-            {snap.manifest.proposedName}
-          </Typography>
-          <Box className="view-snap__pill-toggle-container">
-            <Box className="view-snap__pill-container" paddingLeft={2}>
-              <SnapAuthorship snapId={snap.id} />
-            </Box>
-            <Box paddingLeft={4} className="view-snap__toggle-container">
-              <Tooltip interactive position="bottom" html={t('snapsToggle')}>
-                <ToggleButton
-                  value={snap.enabled}
-                  onToggle={onToggle}
-                  className="view-snap__toggle-button"
-                />
-              </Tooltip>
-            </Box>
-          </Box>
-        </div>
-        <Box
-          className="view-snap__install-details"
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          padding={2}
-        >
-          {firstInstall && (
-            <Typography variant={TypographyVariant.H8}>
-              {t('snapAdded', [
-                formatDate(firstInstall.date, 'MMMM d, y'),
-                firstInstall.origin,
-              ])}
-            </Typography>
-          )}
-          <Typography
-            className="view-snap__version"
-            variant={TypographyVariant.H7}
-          >
-            {t('shorthandVersion', [snap.version])}
-          </Typography>
+    <Box className="view-snap" paddingBottom={8}>
+      <Box
+        className="view-snap__header"
+        paddingTop={8}
+        marginLeft={4}
+        marginRight={4}
+      >
+        <SnapAuthorship snapId={snap.id} />
+      </Box>
+      <Box
+        className="view-snap__description"
+        marginTop={3}
+        marginLeft={4}
+        marginRight={4}
+      >
+        <Text variant={TextVariant.bodyMd} color={TextColor.textDefault}>
+          {snap.manifest.description}
+        </Text>
+      </Box>
+      <Box
+        className="view-snap__version_info"
+        marginTop={2}
+        marginLeft={4}
+        marginRight={4}
+      >
+        <Text variant={TextVariant.bodyMd} color={TextColor.textDefault}>
+          {t('snapVersionInfo', [
+            snap.version,
+            packageName,
+            firstInstall.origin,
+            formatDate(firstInstall.date, 'MMMM d, y'),
+          ])}
+        </Text>
+      </Box>
+      <Box
+        className="view-snap__enable"
+        marginTop={8}
+        marginLeft={4}
+        marginRight={4}
+      >
+        <Text variant={TextVariant.bodyLgMedium}>{t('enableSnap')}</Text>
+        <Text variant={TextVariant.bodyMd} color={TextColor.textDefault}>
+          {t('enableSnapDescription')}
+        </Text>
+        <Box marginTop={2}>
+          <Tooltip interactive position="bottom" html={t('snapsToggle')}>
+            <ToggleButton
+              value={snap.enabled}
+              onToggle={onToggle}
+              className="view-snap__toggle-button"
+            />
+          </Tooltip>
         </Box>
-        <Box
-          className="view-snap__content-container"
-          width={FRACTIONS.SEVEN_TWELFTHS}
-        >
-          <div className="view-snap__section">
-            <Typography
-              variant={TypographyVariant.H6}
-              color={TextColor.textAlternative}
-              boxProps={{ marginTop: 5 }}
-            >
-              {snap.manifest.description}
-            </Typography>
-          </div>
-          <div className="view-snap__section view-snap__permission-list">
-            <Typography variant={TypographyVariant.H4}>
-              {t('permissions')}
-            </Typography>
-            <Typography
-              variant={TypographyVariant.H6}
-              color={TextColor.textAlternative}
-            >
-              {t('snapAccess', [snap.manifest.proposedName])}
-            </Typography>
-            <Box width={BLOCK_SIZES.FULL}>
-              <PermissionsConnectPermissionList
-                permissions={permissions ?? {}}
-                targetSubjectMetadata={targetSubjectMetadata}
-              />
-            </Box>
-          </div>
-          <div className="view-snap__section">
-            <Box width="11/12">
-              <Typography variant={TypographyVariant.H4}>
-                {t('connectedSites')}
-              </Typography>
-              <Typography
-                variant={TypographyVariant.H6}
-                color={TextColor.textAlternative}
-              >
-                {t('connectedSnapSites', [snap.manifest.proposedName])}
-              </Typography>
-              <ConnectedSitesList
-                connectedSubjects={connectedSubjects}
-                onDisconnect={(origin) => {
-                  onDisconnect(origin, snap.id);
-                }}
-              />
-            </Box>
-          </div>
-          <div className="view-snap__section">
-            <Typography variant={TypographyVariant.H4}>
-              {t('removeSnap')}
-            </Typography>
-            <Typography
-              variant={TypographyVariant.H6}
-              color={TextColor.textAlternative}
-              boxProps={{ paddingBottom: 3 }}
-            >
-              {t('removeSnapDescription')}
-            </Typography>
-            <Button
-              className="view-snap__remove-button"
-              type="danger"
-              css={{
-                maxWidth: '175px',
+      </Box>
+      <Box className="view-snap__permissions" marginTop={8}>
+        <Text variant={TextVariant.bodyLgMedium} marginLeft={4} marginRight={4}>
+          {t('permissions')}
+        </Text>
+        <PermissionsConnectPermissionList
+          permissions={permissions ?? {}}
+          targetSubjectMetadata={targetSubjectMetadata}
+        />
+      </Box>
+      <Box
+        className="view-snap__connected-sites"
+        marginTop={8}
+        marginLeft={4}
+        marginRight={4}
+      >
+        <Text variant={TextVariant.bodyLgMedium}>{t('connectedSites')}</Text>
+        <ConnectedSitesList
+          connectedSubjects={connectedSubjects}
+          onDisconnect={(origin) => {
+            onDisconnect(origin, snap.id);
+          }}
+        />
+      </Box>
+      <Box
+        className="view-snap__remove"
+        marginTop={8}
+        marginLeft={4}
+        marginRight={4}
+      >
+        <Text variant={TextVariant.bodyLgMedium} color={TextColor.textDefault}>
+          {t('removeSnap')}
+        </Text>
+        <Text variant={TextVariant.bodyMd} color={TextColor.textDefault}>
+          {t('removeSnapDescription')}
+        </Text>
+        <Box marginTop={3}>
+          <Button
+            className="view-snap__remove-button"
+            type="danger"
+            onClick={() => setIsShowingRemoveWarning(true)}
+          >
+            <Text variant={TextVariant.bodyMd} color={TextColor.errorDefault}>
+              {`${t('remove')} ${snap.manifest.proposedName}`}
+            </Text>
+          </Button>
+          {isShowingRemoveWarning && (
+            <SnapRemoveWarning
+              onCancel={() => setIsShowingRemoveWarning(false)}
+              onSubmit={async () => {
+                await dispatch(removeSnap(snap.id));
               }}
-              onClick={() => setIsShowingRemoveWarning(true)}
-            >
-              {t('removeSnap')}
-            </Button>
-            {isShowingRemoveWarning && (
-              <SnapRemoveWarning
-                onCancel={() => setIsShowingRemoveWarning(false)}
-                onSubmit={async () => {
-                  await dispatch(removeSnap(snap.id));
-                }}
-                snapName={snap.manifest.proposedName}
-              />
-            )}
-          </div>
+              snapName={snap.manifest.proposedName}
+            />
+          )}
         </Box>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
 
