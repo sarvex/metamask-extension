@@ -5,9 +5,11 @@ import {
   SnapCaveatType,
   WALLET_SNAP_PERMISSION_KEY,
 } from '@metamask/rpc-methods';
+import { getSnapPrefix } from '@metamask/snaps-utils';
 import Button from '../../../../components/ui/button';
 import { useI18nContext } from '../../../../hooks/useI18nContext';
 import {
+  Size,
   TextColor,
   TextVariant,
 } from '../../../../helpers/constants/design-system';
@@ -34,7 +36,7 @@ import {
   getTargetSubjectMetadata,
 } from '../../../../selectors';
 import { formatDate, removeSnapIdPrefix } from '../../../../helpers/utils/util';
-import { Text } from '../../../../components/component-library';
+import { ButtonLink, Text } from '../../../../components/component-library';
 
 function ViewSnap() {
   const t = useI18nContext();
@@ -107,6 +109,11 @@ function ViewSnap() {
   const versionHistory = snap.versionHistory ?? [];
   const [firstInstall] = versionHistory;
   const packageName = snap.id && removeSnapIdPrefix(snap.id);
+  const snapPrefix = snap.id && getSnapPrefix(snap.id);
+  const isNPM = snapPrefix === 'npm:';
+  const url = isNPM
+    ? `https://www.npmjs.com/package/${packageName}`
+    : packageName;
 
   return (
     <Box className="view-snap" paddingBottom={8}>
@@ -135,12 +142,27 @@ function ViewSnap() {
         marginRight={4}
       >
         <Text variant={TextVariant.bodyMd} color={TextColor.textDefault}>
-          {t('snapVersionInfo', [
-            snap.version,
-            packageName,
-            firstInstall.origin,
-            formatDate(firstInstall.date, 'MMMM d, y'),
-          ])}
+          {`${t('youInstalled')} `}
+          <span className="view-snap__version_info__version-number">
+            v{snap.version}
+          </span>
+          {` ${t('ofTextNofM')} `}
+          <ButtonLink size={Size.auto} href={url} target="_blank">
+            {packageName}
+          </ButtonLink>
+          {` ${t('from').toLowerCase()} `}
+          <ButtonLink
+            size={Size.auto}
+            href={firstInstall.origin}
+            target="_blank"
+          >
+            {firstInstall.origin}
+          </ButtonLink>
+          {` ${t('on').toLowerCase()} ${formatDate(
+            firstInstall.date,
+            'yyyy-MM-dd',
+          )}`}
+          .
         </Text>
       </Box>
       <Box
