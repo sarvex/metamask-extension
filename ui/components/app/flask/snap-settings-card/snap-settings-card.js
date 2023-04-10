@@ -15,7 +15,7 @@ import {
 import { Icon, IconName, IconSize, Text } from '../../../component-library';
 import SnapAvatar from '../snap-avatar';
 
-const SnapSettingsCard = ({ name, url, onClick, snapId }) => {
+const SnapSettingsCard = ({ name, packageName, onClick, snapId }) => {
   return (
     <Box
       className="snap-settings-card"
@@ -49,7 +49,7 @@ const SnapSettingsCard = ({ name, url, onClick, snapId }) => {
             color={Color.textAlternative}
             variant={TextVariant.bodySm}
           >
-            {url}
+            {packageName}
           </Text>
         </Box>
       </Box>
@@ -70,9 +70,9 @@ SnapSettingsCard.propTypes = {
    */
   name: PropTypes.string,
   /**
-   * Url of the snap website
+   * Name of a snap package
    */
-  url: PropTypes.string,
+  packageName: PropTypes.string,
   /**
    * onClick function of the "See Details" Button
    */
