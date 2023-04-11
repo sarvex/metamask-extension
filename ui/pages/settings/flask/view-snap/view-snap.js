@@ -167,7 +167,7 @@ function ViewSnap() {
       </Box>
       <Box
         className="view-snap__enable"
-        marginTop={8}
+        marginTop={12}
         marginLeft={4}
         marginRight={4}
       >
@@ -185,7 +185,7 @@ function ViewSnap() {
           </Tooltip>
         </Box>
       </Box>
-      <Box className="view-snap__permissions" marginTop={8}>
+      <Box className="view-snap__permissions" marginTop={12}>
         <Text variant={TextVariant.bodyLgMedium} marginLeft={4} marginRight={4}>
           {t('permissions')}
         </Text>
@@ -196,7 +196,7 @@ function ViewSnap() {
       </Box>
       <Box
         className="view-snap__connected-sites"
-        marginTop={8}
+        marginTop={12}
         marginLeft={4}
         marginRight={4}
       >
@@ -210,7 +210,7 @@ function ViewSnap() {
       </Box>
       <Box
         className="view-snap__remove"
-        marginTop={8}
+        marginTop={12}
         marginLeft={4}
         marginRight={4}
       >
