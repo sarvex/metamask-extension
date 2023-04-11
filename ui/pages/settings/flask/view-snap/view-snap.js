@@ -127,7 +127,7 @@ function ViewSnap() {
       </Box>
       <Box
         className="view-snap__description"
-        marginTop={3}
+        marginTop={4}
         marginLeft={4}
         marginRight={4}
       >
@@ -175,7 +175,7 @@ function ViewSnap() {
         <Text variant={TextVariant.bodyMd} color={TextColor.textDefault}>
           {t('enableSnapDescription')}
         </Text>
-        <Box marginTop={2}>
+        <Box marginTop={4}>
           <Tooltip interactive position="bottom" html={t('snapsToggle')}>
             <ToggleButton
               value={snap.enabled}
@@ -200,7 +200,9 @@ function ViewSnap() {
         marginLeft={4}
         marginRight={4}
       >
-        <Text variant={TextVariant.bodyLgMedium}>{t('connectedSites')}</Text>
+        <Text variant={TextVariant.bodyLgMedium} marginBottom={4}>
+          {t('connectedSites')}
+        </Text>
         <ConnectedSitesList
           connectedSubjects={connectedSubjects}
           onDisconnect={(origin) => {
@@ -220,7 +222,7 @@ function ViewSnap() {
         <Text variant={TextVariant.bodyMd} color={TextColor.textDefault}>
           {t('removeSnapDescription')}
         </Text>
-        <Box marginTop={3}>
+        <Box marginTop={4}>
           <Button
             className="view-snap__remove-button"
             type="danger"

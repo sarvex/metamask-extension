@@ -6,4 +6,43 @@
       font-weight: bold;
     }
   }
+
+  .connected-sites-list {
+    &__content-row {
+      border-top: none;
+      padding: 0;
+
+      & &-link-button {
+        padding: 0;
+        padding-inline-start: 0;
+        color: var(--color-error-default);
+        font-size: 14px;
+      }
+
+      a {
+        font-size: 14px;
+        color: var(--color-error-default);
+      }
+
+      a:hover {
+        color: var(--color-error-alternative);
+      }
+    }
+
+    &__subject-info {
+      a.btn-link {
+        font-size: 14px;
+        color: var(--color-error-default);
+      }
+    }
+
+    &__subject-icon {
+      flex-shrink: 0;
+    }
+
+    &__subject-name {
+      font-size: 14px;
+      color: var(--color-primary-default);
+    }
+  }
 }
