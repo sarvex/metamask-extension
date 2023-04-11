@@ -116,7 +116,12 @@ function ViewSnap() {
     : packageName;
 
   return (
-    <Box className="view-snap" paddingBottom={8}>
+    <Box
+      className="view-snap"
+      paddingBottom={8}
+      paddingLeft={3}
+      paddingRight={3}
+    >
       <Box
         className="view-snap__header"
         paddingTop={8}
