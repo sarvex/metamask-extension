@@ -5,7 +5,7 @@ const { AssertionError } = require('assert');
 const ini = require('ini');
 const { loadBuildTypesConfig } = require('../lib/build-type');
 const { Variables } = require('../lib/variables');
-const { BUILD_TARGETS, ENVIRONMENT } = require('./constants');
+const { ENVIRONMENT } = require('./constants');
 
 const VARIABLES_REQUIRED_IN_PRODUCTION = [
   'PUBNUB_PUB_KEY',
