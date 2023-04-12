@@ -152,7 +152,12 @@ function ViewSnap() {
             v{snap.version}
           </span>
           {` ${t('ofTextNofM')} `}
-          <ButtonLink size={Size.auto} href={url} target="_blank">
+          <ButtonLink
+            size={Size.auto}
+            href={url}
+            target="_blank"
+            className="view-snap__version_info__link"
+          >
             {packageName}
           </ButtonLink>
           {` ${t('from').toLowerCase()} `}
@@ -160,6 +165,7 @@ function ViewSnap() {
             size={Size.auto}
             href={firstInstall.origin}
             target="_blank"
+            className="view-snap__version_info__link"
           >
             {firstInstall.origin}
           </ButtonLink>
