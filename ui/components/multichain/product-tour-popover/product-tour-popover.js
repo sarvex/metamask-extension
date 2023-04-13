@@ -137,7 +137,7 @@ ProductTour.propTypes = {
    */
   totalSteps: PropTypes.string,
   /**
-   * PositionObj to decide the left position of the popover tip
+   * PositionObj to decide the position of the popover tip
    */
   positionObj: PropTypes.string,
 };
