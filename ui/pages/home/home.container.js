@@ -64,6 +64,7 @@ const mapStateToProps = (state) => {
   const { metamask, appState } = state;
   const {
     suggestedAssets,
+    suggestedNfts,
     seedPhraseBackedUp,
     selectedAddress,
     connectedStatusPopoverHasBeenShown,
@@ -109,6 +110,7 @@ const mapStateToProps = (state) => {
   return {
     forgottenPassword,
     suggestedAssets,
+    suggestedNfts,
     swapsEnabled,
     unconfirmedTransactionsCount: unconfirmedTransactionsCountSelector(state),
     shouldShowSeedPhraseReminder: getShouldShowSeedPhraseReminder(state),

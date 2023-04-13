@@ -275,6 +275,9 @@
   "addToken": {
     "message": "Add token"
   },
+  "addNft": {
+    "message": "Add NFT(s)"
+  },
   "addingCustomNetwork": {
     "message": "Adding Network"
   },

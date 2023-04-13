@@ -164,6 +164,7 @@ export default class Home extends PureComponent {
       isNotification,
       showAwaitingSwapScreen,
       suggestedAssets = [],
+      suggestedNfts = [],
       swapsFetchParams,
       unconfirmedTransactionsCount,
     } = this.props;
@@ -175,6 +176,7 @@ export default class Home extends PureComponent {
       firstPermissionsRequestId ||
       unconfirmedTransactionsCount > 0 ||
       suggestedAssets.length > 0 ||
+      suggestedNfts.length > 0 ||
       (!isNotification &&
         (showAwaitingSwapScreen || haveSwapsQuotes || swapsFetchParams))
     ) {
@@ -188,6 +190,7 @@ export default class Home extends PureComponent {
       history,
       isNotification,
       suggestedAssets = [],
+      suggestedNfts = [],
       unconfirmedTransactionsCount,
       haveSwapsQuotes,
       showAwaitingSwapScreen,
@@ -204,7 +207,7 @@ export default class Home extends PureComponent {
       history.push(`${CONNECT_ROUTE}/${firstPermissionsRequestId}`);
     } else if (unconfirmedTransactionsCount > 0) {
       history.push(CONFIRM_TRANSACTION_ROUTE);
-    } else if (suggestedAssets.length > 0) {
+    } else if (suggestedAssets.length > 0 || suggestedNfts.length > 0) {
       history.push(CONFIRM_ADD_SUGGESTED_TOKEN_ROUTE);
     } else if (pendingConfirmations.length > 0) {
       history.push(CONFIRMATION_V_NEXT_ROUTE);
