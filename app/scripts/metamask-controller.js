@@ -98,7 +98,6 @@ import { MILLISECOND, SECOND } from '../../shared/constants/time';
 import {
   ORIGIN_METAMASK,
   ///: BEGIN:ONLY_INCLUDE_IN(flask)
-  MESSAGE_TYPE,
   SNAP_DIALOG_TYPES,
   ///: END:ONLY_INCLUDE_IN
   POLLING_TOKEN_ENVIRONMENT_TYPES,
