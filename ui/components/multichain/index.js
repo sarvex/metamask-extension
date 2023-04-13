@@ -10,3 +10,4 @@ export { AddressCopyButton } from './address-copy-button';
 export { MultichainConnectedSiteMenu } from './multichain-connected-site-menu';
 export { NetworkListItem } from './network-list-item';
 export { NetworkListMenu } from './network-list-menu';
+export { ProductTour } from './product-tour-popover';
