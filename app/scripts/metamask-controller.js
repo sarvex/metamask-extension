@@ -3484,6 +3484,20 @@ export default class MetamaskController extends EventEmitter {
     });
   }
 
+  handleWatchAssetRequest = (asset, type) => {
+    switch (type) {
+      case 'ERC20':
+        return this.tokensController.watchAsset(asset, type);
+      case 'ERC721':
+      case 'ERC1155':
+        // TODO
+        break;
+      default:
+        throw new Error(`Asset type ${type} not supported`);
+    }
+    return Promise.resolve();
+  };
+
   //=============================================================================
   // PASSWORD MANAGEMENT
   //=============================================================================
@@ -3863,9 +3877,7 @@ export default class MetamaskController extends EventEmitter {
         getUnlockPromise: this.appStateController.getUnlockPromise.bind(
           this.appStateController,
         ),
-        handleWatchAssetRequest: this.tokensController.watchAsset.bind(
-          this.tokensController,
-        ),
+        handleWatchAssetRequest: this.handleWatchAssetRequest.bind(this),
         requestUserApproval:
           this.approvalController.addAndShowApprovalRequest.bind(
             this.approvalController,
@@ -4276,15 +4288,15 @@ export default class MetamaskController extends EventEmitter {
    */
   findNetworkConfigurationBy(rpcInfo) {
     const { networkConfigurations } = this.networkController.store.getState();
-    const networkConfiguration = Object.values(networkConfigurations).find(
-      (configuration) => {
-        return Object.keys(rpcInfo).some((key) => {
-          return configuration[key] === rpcInfo[key];
-        });
-      },
-    );
+    const [id, networkConfiguration] = Object.entries(
+      networkConfigurations,
+    ).find((configuration) => {
+      return Object.keys(rpcInfo).some((key) => {
+        return configuration[key] === rpcInfo[key];
+      });
+    });
 
-    return networkConfiguration || null;
+    return { ...networkConfiguration, id } || null;
   }
 
   /**
