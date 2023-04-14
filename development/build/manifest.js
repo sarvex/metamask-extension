@@ -173,8 +173,5 @@ async function getBuildModifications(buildType, platform) {
     }
   }
 
-  console.log('--- BUILD MODIFICATIONS');
-  console.log(buildModifications);
-
   return buildModifications;
 }
