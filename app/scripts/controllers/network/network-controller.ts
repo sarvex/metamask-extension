@@ -782,8 +782,8 @@ export class NetworkController extends EventEmitter {
   /**
    * Re-initializes the provider and block tracker for the current network.
    */
-  resetConnection(): void {
-    this._setProviderConfig(this.providerStore.getState());
+  async resetConnection() {
+    await this._setProviderConfig(this.providerStore.getState());
   }
 
   /**

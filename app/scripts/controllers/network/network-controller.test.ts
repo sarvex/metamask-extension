@@ -5107,6 +5107,8 @@ describe('NetworkController', () => {
                 messenger: unrestrictedMessenger,
                 eventType: NetworkControllerEventType.NetworkWillChange,
                 operation: () => {
+                  // Intentionally not awaited because we want to capture an
+                  // event emitted partway throught this operation
                   controller.resetConnection();
                 },
               });
@@ -5147,6 +5149,8 @@ describe('NetworkController', () => {
                 // happens before networkDidChange
                 count: 1,
                 operation: () => {
+                  // Intentionally not awaited because we want to capture a
+                  // state change made partway through the operation
                   controller.resetConnection();
                 },
               });
@@ -5189,6 +5193,8 @@ describe('NetworkController', () => {
                 // happens before networkDidChange
                 count: 1,
                 operation: () => {
+                  // Intentionally not awaited because we want to check state
+                  // partway through the operation
                   controller.resetConnection();
                 },
               });
@@ -5216,7 +5222,7 @@ describe('NetworkController', () => {
             async ({ controller, network }) => {
               network.mockEssentialRpcCalls();
 
-              controller.resetConnection();
+              await controller.resetConnection();
 
               const { provider } = controller.getProviderAndBlockTracker();
               assert(provider, 'Provider is somehow unset');
@@ -5255,7 +5261,7 @@ describe('NetworkController', () => {
 
               const { provider: providerBefore } =
                 controller.getProviderAndBlockTracker();
-              controller.resetConnection();
+              await controller.resetConnection();
               const { provider: providerAfter } =
                 controller.getProviderAndBlockTracker();
 
@@ -5286,8 +5292,8 @@ describe('NetworkController', () => {
               const networkDidChange = await waitForPublishedEvents({
                 messenger: unrestrictedMessenger,
                 eventType: NetworkControllerEventType.NetworkDidChange,
-                operation: () => {
-                  controller.resetConnection();
+                operation: async () => {
+                  await controller.resetConnection();
                 },
               });
 
@@ -5329,7 +5335,7 @@ describe('NetworkController', () => {
                 eventType: NetworkControllerEventType.InfuraIsBlocked,
               });
 
-              controller.resetConnection();
+              await controller.resetConnection();
 
               expect(await promiseForNoInfuraIsUnblockedEvents).toBeTruthy();
               expect(await promiseForInfuraIsBlocked).toBeTruthy();
@@ -5352,13 +5358,7 @@ describe('NetworkController', () => {
             async ({ controller, network }) => {
               network.mockEssentialRpcCalls();
 
-              await waitForStateChanges({
-                controller,
-                propertyPath: ['networkStatus'],
-                operation: () => {
-                  controller.resetConnection();
-                },
-              });
+              await controller.resetConnection();
 
               expect(controller.store.getState().networkStatus).toBe(
                 'available',
@@ -5390,13 +5390,7 @@ describe('NetworkController', () => {
                 },
               });
 
-              await waitForStateChanges({
-                controller,
-                propertyPath: ['networkDetails'],
-                operation: () => {
-                  controller.resetConnection();
-                },
-              });
+              await controller.resetConnection();
 
               expect(controller.store.getState().networkDetails).toStrictEqual({
                 EIPS: {
@@ -5441,6 +5435,8 @@ describe('NetworkController', () => {
               messenger: unrestrictedMessenger,
               eventType: NetworkControllerEventType.NetworkWillChange,
               operation: () => {
+                // Intentionally not awaited because we're capturing an event
+                // emitted partway through the operation
                 controller.resetConnection();
               },
             });
@@ -5491,6 +5487,8 @@ describe('NetworkController', () => {
               // before networkDidChange
               count: 1,
               operation: () => {
+                // Intentionally not awaited because we want to check state
+                // partway through the operation
                 controller.resetConnection();
               },
             });
@@ -5541,6 +5539,8 @@ describe('NetworkController', () => {
               // before networkDidChange
               count: 1,
               operation: () => {
+                // Intentionally not awaited because we want to check state
+                // partway through the operation
                 controller.resetConnection();
               },
             });
@@ -5576,7 +5576,7 @@ describe('NetworkController', () => {
           async ({ controller, network }) => {
             network.mockEssentialRpcCalls();
 
-            controller.resetConnection();
+            await controller.resetConnection();
 
             const { provider } = controller.getProviderAndBlockTracker();
             assert(provider, 'Provider is somehow unset');
@@ -5623,12 +5623,7 @@ describe('NetworkController', () => {
 
             const { provider: providerBefore } =
               controller.getProviderAndBlockTracker();
-            await waitForLookupNetworkToComplete({
-              controller,
-              operation: () => {
-                controller.resetConnection();
-              },
-            });
+            await controller.resetConnection();
             const { provider: providerAfter } =
               controller.getProviderAndBlockTracker();
 
@@ -5667,8 +5662,8 @@ describe('NetworkController', () => {
             const networkDidChange = await waitForPublishedEvents({
               messenger: unrestrictedMessenger,
               eventType: NetworkControllerEventType.NetworkDidChange,
-              operation: () => {
-                controller.resetConnection();
+              operation: async () => {
+                await controller.resetConnection();
               },
             });
 
@@ -5707,8 +5702,8 @@ describe('NetworkController', () => {
             const infuraIsUnblocked = await waitForPublishedEvents({
               messenger: unrestrictedMessenger,
               eventType: NetworkControllerEventType.InfuraIsUnblocked,
-              operation: () => {
-                controller.resetConnection();
+              operation: async () => {
+                await controller.resetConnection();
               },
             });
 
@@ -5745,13 +5740,7 @@ describe('NetworkController', () => {
             });
             expect(controller.store.getState().networkStatus).toBe('unknown');
 
-            await waitForStateChanges({
-              controller,
-              propertyPath: ['networkStatus'],
-              operation: () => {
-                controller.resetConnection();
-              },
-            });
+            await controller.resetConnection();
 
             expect(controller.store.getState().networkStatus).toBe('available');
           },
@@ -5789,13 +5778,7 @@ describe('NetworkController', () => {
               },
             });
 
-            await waitForStateChanges({
-              controller,
-              propertyPath: ['networkDetails'],
-              operation: () => {
-                controller.resetConnection();
-              },
-            });
+            await controller.resetConnection();
 
             expect(controller.store.getState().networkDetails).toStrictEqual({
               EIPS: {
