@@ -1,5 +1,5 @@
+import { ApprovalType } from '@metamask/controller-utils';
 import getFetchWithTimeout from '../../../shared/modules/fetch-with-timeout';
-import { MESSAGE_TYPE } from '../../../shared/constants/app';
 
 const fetchWithTimeout = getFetchWithTimeout();
 
@@ -11,7 +11,7 @@ export async function securityProviderCheck(
 ) {
   let dataToValidate;
 
-  if (methodName === MESSAGE_TYPE.ETH_SIGN_TYPED_DATA) {
+  if (methodName === ApprovalType.EthSignTypedData) {
     dataToValidate = {
       host_name: requestData.msgParams.origin,
       rpc_method_name: methodName,
@@ -20,8 +20,8 @@ export async function securityProviderCheck(
       currentLocale,
     };
   } else if (
-    methodName === MESSAGE_TYPE.ETH_SIGN ||
-    methodName === MESSAGE_TYPE.PERSONAL_SIGN
+    methodName === ApprovalType.EthSign ||
+    methodName === ApprovalType.PersonalSign
   ) {
     dataToValidate = {
       host_name: requestData.msgParams.origin,

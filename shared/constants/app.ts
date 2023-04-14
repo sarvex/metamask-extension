@@ -1,5 +1,6 @@
 ///: BEGIN:ONLY_INCLUDE_IN(flask)
 import { DialogType } from '@metamask/rpc-methods';
+import { ApprovalType } from '@metamask/controller-utils';
 ///: END:ONLY_INCLUDE_IN
 import { RestrictedMethods } from './permissions';
 
@@ -77,9 +78,9 @@ export const MESSAGE_TYPE = {
 
 ///: BEGIN:ONLY_INCLUDE_IN(flask)
 export const SNAP_DIALOG_TYPES = {
-  [DialogType.Alert]: MESSAGE_TYPE.SNAP_DIALOG_ALERT,
-  [DialogType.Confirmation]: MESSAGE_TYPE.SNAP_DIALOG_CONFIRMATION,
-  [DialogType.Prompt]: MESSAGE_TYPE.SNAP_DIALOG_PROMPT,
+  [DialogType.Alert]: ApprovalType.SnapDialogAlert,
+  [DialogType.Confirmation]: ApprovalType.SnapDialogConfirmation,
+  [DialogType.Prompt]: ApprovalType.SnapDialogPrompt,
 };
 ///: END:ONLY_INCLUDE_IN
 

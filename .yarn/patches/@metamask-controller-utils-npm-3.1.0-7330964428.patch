@@ -1,0 +1,180 @@
+diff --git a/dist/constants.d.ts b/dist/constants.d.ts
+index 109a00b684ff58cc6d8bce1d9eb620f01e6d7490..f5357e2651932a206991bb4c81a630149680e064 100644
+--- a/dist/constants.d.ts
++++ b/dist/constants.d.ts
+@@ -67,3 +67,26 @@ export declare const BUILT_IN_NETWORKS: {
+ export declare const OPENSEA_PROXY_URL = "https://proxy.metafi.codefi.network/opensea/v1/api/v1";
+ export declare const OPENSEA_API_URL = "https://api.opensea.io/api/v1";
+ export declare const OPENSEA_TEST_API_URL = "https://testnets-api.opensea.io/api/v1";
++/**
++ * Approval request types for various operations.
++ * These types are used by different controllers to create and manage
++ * approval requests consistently.
++ */
++export declare enum ApprovalType {
++    AddEthereumChain = "wallet_addEthereumChain",
++    EthDecrypt = "eth_decrypt",
++    EthGetEncryptionPublicKey = "eth_getEncryptionPublicKey",
++    EthSign = "eth_sign",
++    EthSignTypedData = "eth_signTypedData",
++    PersonalSign = "personal_sign",
++    SwitchEthereumChain = "wallet_switchEthereumChain",
++    Transaction = "transaction",
++    WalletRequestPermissions = "wallet_requestPermissions",
++    WatchAsset = "wallet_watchAsset",
++    SnapDialogAlert = "snap_dialog:alert",
++    SnapDialogConfirmation = "snap_dialog:confirmation",
++    SnapDialogPrompt = "snap_dialog:prompt",
++    Unlock = "unlock",
++    ConnectAccounts = "connect_accounts"
++}
++//# sourceMappingURL=constants.d.ts.map
+\ No newline at end of file
+diff --git a/dist/constants.d.ts.map b/dist/constants.d.ts.map
+new file mode 100644
+index 0000000000000000000000000000000000000000..e968a0c14c3ea19c87ff2837ec3b22da4d7eec1c
+--- /dev/null
++++ b/dist/constants.d.ts.map
+@@ -0,0 +1 @@
++{"version":3,"file":"constants.d.ts","sourceRoot":"","sources":["../src/constants.ts"],"names":[],"mappings":"AAAA,OAAO,EAAe,cAAc,EAAE,eAAe,EAAE,MAAM,SAAS,CAAC;AAEvE,eAAO,MAAM,GAAG,QAAQ,CAAC;AACzB,eAAO,MAAM,qBAAqB,QAAQ,CAAC;AAC3C,eAAO,MAAM,wBAAwB,sCAAsC,CAAC;AAG5E,eAAO,MAAM,gBAAgB,SAAS,CAAC;AACvC;;;GAGG;AACH,eAAO,MAAM,iBAAiB,mBAAmB,CAAC;AAGlD,eAAO,MAAM,MAAM,WAAW,CAAC;AAC/B,eAAO,MAAM,OAAO,YAAY,CAAC;AACjC,eAAO,MAAM,KAAK,UAAU,CAAC;AAG7B,eAAO,MAAM,mBAAmB,eAAe,CAAC;AAChD,eAAO,MAAM,4BAA4B,eAAe,CAAC;AACzD,eAAO,MAAM,8BAA8B,eAAe,CAAC;AAC3D,eAAO,MAAM,oBAAoB,eAAe,CAAC;AACjD,eAAO,MAAM,iCAAiC,eAAe,CAAC;AAC9D,eAAO,MAAM,mCAAmC,eAAe,CAAC;AAGhE,eAAO,MAAM,IAAI,SAAS,CAAC;AAG3B,eAAO,MAAM,WAAW;;;;;CAKvB,CAAC;AAGF,eAAO,MAAM,sBAAsB;;;CAGlC,CAAC;AAEF;;GAEG;AACH,eAAO,MAAM,iBAAiB;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;CAgCpB,CAAC;AAGX,eAAO,MAAM,iBAAiB,0DAC2B,CAAC;AAC1D,eAAO,MAAM,eAAe,kCAAkC,CAAC;AAC/D,eAAO,MAAM,oBAAoB,2CAA2C,CAAC;AAE7E;;;;GAIG;AACH,oBAAY,YAAY;IACtB,gBAAgB,4BAA4B;IAC5C,UAAU,gBAAgB;IAC1B,yBAAyB,+BAA+B;IACxD,OAAO,aAAa;IACpB,gBAAgB,sBAAsB;IACtC,YAAY,kBAAkB;IAC9B,mBAAmB,+BAA+B;IAClD,WAAW,gBAAgB;IAC3B,wBAAwB,8BAA8B;IACtD,UAAU,sBAAsB;IAChC,eAAe,sBAAsB;IACrC,sBAAsB,6BAA6B;IACnD,gBAAgB,uBAAuB;IACvC,MAAM,WAAW;IACjB,eAAe,qBAAqB;CACrC"}
+\ No newline at end of file
+diff --git a/dist/constants.js b/dist/constants.js
+index 67cecd6135adc8e5cf3a5b72d62244f72f16d5e9..52608d46c3aee99174e024d851f3dcf9e4441a8e 100644
+--- a/dist/constants.js
++++ b/dist/constants.js
+@@ -1,6 +1,6 @@
+ "use strict";
+ Object.defineProperty(exports, "__esModule", { value: true });
+-exports.OPENSEA_TEST_API_URL = exports.OPENSEA_API_URL = exports.OPENSEA_PROXY_URL = exports.BUILT_IN_NETWORKS = exports.TESTNET_TICKER_SYMBOLS = exports.ASSET_TYPES = exports.GWEI = exports.ERC1155_TOKEN_RECEIVER_INTERFACE_ID = exports.ERC1155_METADATA_URI_INTERFACE_ID = exports.ERC1155_INTERFACE_ID = exports.ERC721_ENUMERABLE_INTERFACE_ID = exports.ERC721_METADATA_INTERFACE_ID = exports.ERC721_INTERFACE_ID = exports.ERC20 = exports.ERC1155 = exports.ERC721 = exports.MAX_SAFE_CHAIN_ID = exports.GANACHE_CHAIN_ID = exports.IPFS_DEFAULT_GATEWAY_URL = exports.FALL_BACK_VS_CURRENCY = exports.RPC = void 0;
++exports.ApprovalType = exports.OPENSEA_TEST_API_URL = exports.OPENSEA_API_URL = exports.OPENSEA_PROXY_URL = exports.BUILT_IN_NETWORKS = exports.TESTNET_TICKER_SYMBOLS = exports.ASSET_TYPES = exports.GWEI = exports.ERC1155_TOKEN_RECEIVER_INTERFACE_ID = exports.ERC1155_METADATA_URI_INTERFACE_ID = exports.ERC1155_INTERFACE_ID = exports.ERC721_ENUMERABLE_INTERFACE_ID = exports.ERC721_METADATA_INTERFACE_ID = exports.ERC721_INTERFACE_ID = exports.ERC20 = exports.ERC1155 = exports.ERC721 = exports.MAX_SAFE_CHAIN_ID = exports.GANACHE_CHAIN_ID = exports.IPFS_DEFAULT_GATEWAY_URL = exports.FALL_BACK_VS_CURRENCY = exports.RPC = void 0;
+ const types_1 = require("./types");
+ exports.RPC = 'rpc';
+ exports.FALL_BACK_VS_CURRENCY = 'ETH';
+@@ -77,4 +77,27 @@ exports.BUILT_IN_NETWORKS = {
+ exports.OPENSEA_PROXY_URL = 'https://proxy.metafi.codefi.network/opensea/v1/api/v1';
+ exports.OPENSEA_API_URL = 'https://api.opensea.io/api/v1';
+ exports.OPENSEA_TEST_API_URL = 'https://testnets-api.opensea.io/api/v1';
++/**
++ * Approval request types for various operations.
++ * These types are used by different controllers to create and manage
++ * approval requests consistently.
++ */
++var ApprovalType;
++(function (ApprovalType) {
++    ApprovalType["AddEthereumChain"] = "wallet_addEthereumChain";
++    ApprovalType["EthDecrypt"] = "eth_decrypt";
++    ApprovalType["EthGetEncryptionPublicKey"] = "eth_getEncryptionPublicKey";
++    ApprovalType["EthSign"] = "eth_sign";
++    ApprovalType["EthSignTypedData"] = "eth_signTypedData";
++    ApprovalType["PersonalSign"] = "personal_sign";
++    ApprovalType["SwitchEthereumChain"] = "wallet_switchEthereumChain";
++    ApprovalType["Transaction"] = "transaction";
++    ApprovalType["WalletRequestPermissions"] = "wallet_requestPermissions";
++    ApprovalType["WatchAsset"] = "wallet_watchAsset";
++    ApprovalType["SnapDialogAlert"] = "snap_dialog:alert";
++    ApprovalType["SnapDialogConfirmation"] = "snap_dialog:confirmation";
++    ApprovalType["SnapDialogPrompt"] = "snap_dialog:prompt";
++    ApprovalType["Unlock"] = "unlock";
++    ApprovalType["ConnectAccounts"] = "connect_accounts";
++})(ApprovalType = exports.ApprovalType || (exports.ApprovalType = {}));
+ //# sourceMappingURL=constants.js.map
+\ No newline at end of file
+diff --git a/dist/constants.js.map b/dist/constants.js.map
+index 718e15c9dcca4fcf7dc7b5e20af3f97f00fcad88..0a9cecf2af1d94f73823ce15bd728cddb928040d 100644
+--- a/dist/constants.js.map
++++ b/dist/constants.js.map
+@@ -1 +1 @@
+-{"version":3,"file":"constants.js","sourceRoot":"","sources":["../src/constants.ts"],"names":[],"mappings":";;;AAAA,mCAAuE;AAE1D,QAAA,GAAG,GAAG,KAAK,CAAC;AACZ,QAAA,qBAAqB,GAAG,KAAK,CAAC;AAC9B,QAAA,wBAAwB,GAAG,mCAAmC,CAAC;AAE5E,cAAc;AACD,QAAA,gBAAgB,GAAG,MAAM,CAAC;AACvC;;;GAGG;AACU,QAAA,iBAAiB,GAAG,gBAAgB,CAAC;AAElD,kBAAkB;AACL,QAAA,MAAM,GAAG,QAAQ,CAAC;AAClB,QAAA,OAAO,GAAG,SAAS,CAAC;AACpB,QAAA,KAAK,GAAG,OAAO,CAAC;AAE7B,sBAAsB;AACT,QAAA,mBAAmB,GAAG,YAAY,CAAC;AACnC,QAAA,4BAA4B,GAAG,YAAY,CAAC;AAC5C,QAAA,8BAA8B,GAAG,YAAY,CAAC;AAC9C,QAAA,oBAAoB,GAAG,YAAY,CAAC;AACpC,QAAA,iCAAiC,GAAG,YAAY,CAAC;AACjD,QAAA,mCAAmC,GAAG,YAAY,CAAC;AAEhE,QAAQ;AACK,QAAA,IAAI,GAAG,MAAM,CAAC;AAE3B,cAAc;AACD,QAAA,WAAW,GAAG;IACzB,MAAM,EAAE,QAAQ;IAChB,KAAK,EAAE,OAAO;IACd,GAAG,EAAE,KAAK;IACV,OAAO,EAAE,SAAS;CACnB,CAAC;AAEF,iBAAiB;AACJ,QAAA,sBAAsB,GAAG;IACpC,MAAM,EAAE,WAAW;IACnB,OAAO,EAAE,YAAY;CACtB,CAAC;AAEF;;GAEG;AACU,QAAA,iBAAiB,GAAG;IAC/B,CAAC,mBAAW,CAAC,MAAM,CAAC,EAAE;QACpB,OAAO,EAAE,uBAAe,CAAC,MAAM;QAC/B,MAAM,EAAE,sBAAc,CAAC,MAAM;QAC7B,QAAQ,EAAE;YACR,gBAAgB,EAAE,WAAW,mBAAW,CAAC,MAAM,eAAe;SAC/D;KACF;IACD,CAAC,mBAAW,CAAC,OAAO,CAAC,EAAE;QACrB,OAAO,EAAE,uBAAe,CAAC,OAAO;QAChC,MAAM,EAAE,sBAAc,CAAC,OAAO;QAC9B,QAAQ,EAAE;YACR,gBAAgB,EAAE,WAAW,mBAAW,CAAC,OAAO,eAAe;SAChE;KACF;IACD,CAAC,mBAAW,CAAC,OAAO,CAAC,EAAE;QACrB,OAAO,EAAE,uBAAe,CAAC,OAAO;QAChC,MAAM,EAAE,sBAAc,CAAC,OAAO;QAC9B,QAAQ,EAAE;YACR,gBAAgB,EAAE,sBAAsB;SACzC;KACF;IACD,CAAC,mBAAW,CAAC,SAAS,CAAC,EAAE;QACvB,OAAO,EAAE,uBAAe,CAAC,SAAS;QAClC,gBAAgB,EAAE,SAAS;QAC3B,QAAQ,EAAE,SAAS;KACpB;IACD,CAAC,mBAAW,CAAC,GAAG,CAAC,EAAE;QACjB,OAAO,EAAE,SAAS;QAClB,gBAAgB,EAAE,SAAS;QAC3B,QAAQ,EAAE,SAAS;KACpB;CACO,CAAC;AAEX,OAAO;AACM,QAAA,iBAAiB,GAC5B,uDAAuD,CAAC;AAC7C,QAAA,eAAe,GAAG,+BAA+B,CAAC;AAClD,QAAA,oBAAoB,GAAG,wCAAwC,CAAC","sourcesContent":["import { NetworkType, NetworksTicker, NetworksChainId } from './types';\n\nexport const RPC = 'rpc';\nexport const FALL_BACK_VS_CURRENCY = 'ETH';\nexport const IPFS_DEFAULT_GATEWAY_URL = 'https://cloudflare-ipfs.com/ipfs/';\n\n// NETWORKS ID\nexport const GANACHE_CHAIN_ID = '1337';\n/**\n * The largest possible chain ID we can handle.\n * Explanation: https://gist.github.com/rekmarks/a47bd5f2525936c4b8eee31a16345553\n */\nexport const MAX_SAFE_CHAIN_ID = 4503599627370476;\n\n// TOKEN STANDARDS\nexport const ERC721 = 'ERC721';\nexport const ERC1155 = 'ERC1155';\nexport const ERC20 = 'ERC20';\n\n// TOKEN INTERFACE IDS\nexport const ERC721_INTERFACE_ID = '0x80ac58cd';\nexport const ERC721_METADATA_INTERFACE_ID = '0x5b5e139f';\nexport const ERC721_ENUMERABLE_INTERFACE_ID = '0x780e9d63';\nexport const ERC1155_INTERFACE_ID = '0xd9b67a26';\nexport const ERC1155_METADATA_URI_INTERFACE_ID = '0x0e89341c';\nexport const ERC1155_TOKEN_RECEIVER_INTERFACE_ID = '0x4e2312e0';\n\n// UNITS\nexport const GWEI = 'gwei';\n\n// ASSET TYPES\nexport const ASSET_TYPES = {\n  NATIVE: 'NATIVE',\n  TOKEN: 'TOKEN',\n  NFT: 'NFT',\n  UNKNOWN: 'UNKNOWN',\n};\n\n// TICKER SYMBOLS\nexport const TESTNET_TICKER_SYMBOLS = {\n  GOERLI: 'GoerliETH',\n  SEPOLIA: 'SepoliaETH',\n};\n\n/**\n * Map of all build-in Infura networks to their network, ticker and chain IDs.\n */\nexport const BUILT_IN_NETWORKS = {\n  [NetworkType.goerli]: {\n    chainId: NetworksChainId.goerli,\n    ticker: NetworksTicker.goerli,\n    rpcPrefs: {\n      blockExplorerUrl: `https://${NetworkType.goerli}.etherscan.io`,\n    },\n  },\n  [NetworkType.sepolia]: {\n    chainId: NetworksChainId.sepolia,\n    ticker: NetworksTicker.sepolia,\n    rpcPrefs: {\n      blockExplorerUrl: `https://${NetworkType.sepolia}.etherscan.io`,\n    },\n  },\n  [NetworkType.mainnet]: {\n    chainId: NetworksChainId.mainnet,\n    ticker: NetworksTicker.mainnet,\n    rpcPrefs: {\n      blockExplorerUrl: 'https://etherscan.io',\n    },\n  },\n  [NetworkType.localhost]: {\n    chainId: NetworksChainId.localhost,\n    blockExplorerUrl: undefined,\n    rpcPrefs: undefined,\n  },\n  [NetworkType.rpc]: {\n    chainId: undefined,\n    blockExplorerUrl: undefined,\n    rpcPrefs: undefined,\n  },\n} as const;\n\n// APIs\nexport const OPENSEA_PROXY_URL =\n  'https://proxy.metafi.codefi.network/opensea/v1/api/v1';\nexport const OPENSEA_API_URL = 'https://api.opensea.io/api/v1';\nexport const OPENSEA_TEST_API_URL = 'https://testnets-api.opensea.io/api/v1';\n"]}
+\ No newline at end of file
++{"version":3,"file":"constants.js","sourceRoot":"","sources":["../src/constants.ts"],"names":[],"mappings":"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","sourcesContent":["import { NetworkType, NetworksTicker, NetworksChainId } from './types';\n\nexport const RPC = 'rpc';\nexport const FALL_BACK_VS_CURRENCY = 'ETH';\nexport const IPFS_DEFAULT_GATEWAY_URL = 'https://cloudflare-ipfs.com/ipfs/';\n\n// NETWORKS ID\nexport const GANACHE_CHAIN_ID = '1337';\n/**\n * The largest possible chain ID we can handle.\n * Explanation: https://gist.github.com/rekmarks/a47bd5f2525936c4b8eee31a16345553\n */\nexport const MAX_SAFE_CHAIN_ID = 4503599627370476;\n\n// TOKEN STANDARDS\nexport const ERC721 = 'ERC721';\nexport const ERC1155 = 'ERC1155';\nexport const ERC20 = 'ERC20';\n\n// TOKEN INTERFACE IDS\nexport const ERC721_INTERFACE_ID = '0x80ac58cd';\nexport const ERC721_METADATA_INTERFACE_ID = '0x5b5e139f';\nexport const ERC721_ENUMERABLE_INTERFACE_ID = '0x780e9d63';\nexport const ERC1155_INTERFACE_ID = '0xd9b67a26';\nexport const ERC1155_METADATA_URI_INTERFACE_ID = '0x0e89341c';\nexport const ERC1155_TOKEN_RECEIVER_INTERFACE_ID = '0x4e2312e0';\n\n// UNITS\nexport const GWEI = 'gwei';\n\n// ASSET TYPES\nexport const ASSET_TYPES = {\n  NATIVE: 'NATIVE',\n  TOKEN: 'TOKEN',\n  NFT: 'NFT',\n  UNKNOWN: 'UNKNOWN',\n};\n\n// TICKER SYMBOLS\nexport const TESTNET_TICKER_SYMBOLS = {\n  GOERLI: 'GoerliETH',\n  SEPOLIA: 'SepoliaETH',\n};\n\n/**\n * Map of all build-in Infura networks to their network, ticker and chain IDs.\n */\nexport const BUILT_IN_NETWORKS = {\n  [NetworkType.goerli]: {\n    chainId: NetworksChainId.goerli,\n    ticker: NetworksTicker.goerli,\n    rpcPrefs: {\n      blockExplorerUrl: `https://${NetworkType.goerli}.etherscan.io`,\n    },\n  },\n  [NetworkType.sepolia]: {\n    chainId: NetworksChainId.sepolia,\n    ticker: NetworksTicker.sepolia,\n    rpcPrefs: {\n      blockExplorerUrl: `https://${NetworkType.sepolia}.etherscan.io`,\n    },\n  },\n  [NetworkType.mainnet]: {\n    chainId: NetworksChainId.mainnet,\n    ticker: NetworksTicker.mainnet,\n    rpcPrefs: {\n      blockExplorerUrl: 'https://etherscan.io',\n    },\n  },\n  [NetworkType.localhost]: {\n    chainId: NetworksChainId.localhost,\n    blockExplorerUrl: undefined,\n    rpcPrefs: undefined,\n  },\n  [NetworkType.rpc]: {\n    chainId: undefined,\n    blockExplorerUrl: undefined,\n    rpcPrefs: undefined,\n  },\n} as const;\n\n// APIs\nexport const OPENSEA_PROXY_URL =\n  'https://proxy.metafi.codefi.network/opensea/v1/api/v1';\nexport const OPENSEA_API_URL = 'https://api.opensea.io/api/v1';\nexport const OPENSEA_TEST_API_URL = 'https://testnets-api.opensea.io/api/v1';\n\n/**\n * Approval request types for various operations.\n * These types are used by different controllers to create and manage\n * approval requests consistently.\n */\nexport enum ApprovalType {\n  AddEthereumChain = 'wallet_addEthereumChain',\n  EthDecrypt = 'eth_decrypt',\n  EthGetEncryptionPublicKey = 'eth_getEncryptionPublicKey',\n  EthSign = 'eth_sign',\n  EthSignTypedData = 'eth_signTypedData',\n  PersonalSign = 'personal_sign',\n  SwitchEthereumChain = 'wallet_switchEthereumChain',\n  Transaction = 'transaction',\n  WalletRequestPermissions = 'wallet_requestPermissions',\n  WatchAsset = 'wallet_watchAsset',\n  SnapDialogAlert = 'snap_dialog:alert',\n  SnapDialogConfirmation = 'snap_dialog:confirmation',\n  SnapDialogPrompt = 'snap_dialog:prompt',\n  Unlock = 'unlock',\n  ConnectAccounts = 'connect_accounts',\n}\n"]}
+\ No newline at end of file
+diff --git a/dist/index.d.ts b/dist/index.d.ts
+index 14a22e8e00e40e392f384d09f9804eaa061255b4..49556d0d341f498ce306223e672bcef1d73e1653 100644
+--- a/dist/index.d.ts
++++ b/dist/index.d.ts
+@@ -2,3 +2,4 @@ export * from './constants';
+ export * from './util';
+ export * from './types';
+ export * from './siwe';
++//# sourceMappingURL=index.d.ts.map
+\ No newline at end of file
+diff --git a/dist/index.d.ts.map b/dist/index.d.ts.map
+new file mode 100644
+index 0000000000000000000000000000000000000000..a447efc982f097ecd66b317f0c592b3418dff44e
+--- /dev/null
++++ b/dist/index.d.ts.map
+@@ -0,0 +1 @@
++{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../src/index.ts"],"names":[],"mappings":"AAAA,cAAc,aAAa,CAAC;AAC5B,cAAc,QAAQ,CAAC;AACvB,cAAc,SAAS,CAAC;AACxB,cAAc,QAAQ,CAAC"}
+\ No newline at end of file
+diff --git a/dist/logger.d.ts b/dist/logger.d.ts
+index 1f930cc93282212545f949b87406d7dc797612c6..a632d0a2d898d4ae6890663b3b60c84dd2ff4595 100644
+--- a/dist/logger.d.ts
++++ b/dist/logger.d.ts
+@@ -2,3 +2,4 @@
+ import { createModuleLogger } from '@metamask/utils';
+ export declare const projectLogger: import("debug").Debugger;
+ export { createModuleLogger };
++//# sourceMappingURL=logger.d.ts.map
+\ No newline at end of file
+diff --git a/dist/logger.d.ts.map b/dist/logger.d.ts.map
+new file mode 100644
+index 0000000000000000000000000000000000000000..e1fc6b0c5971f718c5fab2e563348800b4f65604
+--- /dev/null
++++ b/dist/logger.d.ts.map
+@@ -0,0 +1 @@
++{"version":3,"file":"logger.d.ts","sourceRoot":"","sources":["../src/logger.ts"],"names":[],"mappings":";AAAA,OAAO,EAAuB,kBAAkB,EAAE,MAAM,iBAAiB,CAAC;AAE1E,eAAO,MAAM,aAAa,0BAA0C,CAAC;AAErE,OAAO,EAAE,kBAAkB,EAAE,CAAC"}
+\ No newline at end of file
+diff --git a/dist/siwe.d.ts b/dist/siwe.d.ts
+index 6991a338897aba265e715b4c2922c8b4c37d6915..601b8039a19f578f041a0ea92c1512350bb1badf 100644
+--- a/dist/siwe.d.ts
++++ b/dist/siwe.d.ts
+@@ -27,3 +27,4 @@ export declare type SIWEMessage = {
+ export declare const detectSIWE: (msgParams: {
+     data: string;
+ }) => SIWEMessage;
++//# sourceMappingURL=siwe.d.ts.map
+\ No newline at end of file
+diff --git a/dist/siwe.d.ts.map b/dist/siwe.d.ts.map
+new file mode 100644
+index 0000000000000000000000000000000000000000..77279bd3005310f5cf0a925e36f9a0a9a965be60
+--- /dev/null
++++ b/dist/siwe.d.ts.map
+@@ -0,0 +1 @@
++{"version":3,"file":"siwe.d.ts","sourceRoot":"","sources":["../src/siwe.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAE,MAAM,uBAAuB,CAAC;AAoCtD;;;;;;GAMG;AACH,oBAAY,WAAW,GACnB;IAAE,aAAa,EAAE,IAAI,CAAC;IAAC,aAAa,EAAE,aAAa,CAAA;CAAE,GACrD;IAAE,aAAa,EAAE,KAAK,CAAC;IAAC,aAAa,EAAE,IAAI,CAAA;CAAE,CAAC;AAElD;;;;;;;;;;GAUG;AACH,eAAO,MAAM,UAAU,cAAe;IAAE,IAAI,EAAE,MAAM,CAAA;CAAE,KAAG,WAiBxD,CAAC"}
+\ No newline at end of file
+diff --git a/dist/types.d.ts b/dist/types.d.ts
+index 9eff4195007819447339b8bbbfca991e42dbf2e7..4b4a3c0d2bb3a1de96da9dc5cf3bc04ee0e27062 100644
+--- a/dist/types.d.ts
++++ b/dist/types.d.ts
+@@ -32,3 +32,4 @@ export declare enum NetworksTicker {
+ export declare type Json = null | boolean | number | string | Json[] | {
+     [prop: string]: Json;
+ };
++//# sourceMappingURL=types.d.ts.map
+\ No newline at end of file
+diff --git a/dist/types.d.ts.map b/dist/types.d.ts.map
+new file mode 100644
+index 0000000000000000000000000000000000000000..63f25fa427fe18f0f2bc05a922c233a43124a5b2
+--- /dev/null
++++ b/dist/types.d.ts.map
+@@ -0,0 +1 @@
++{"version":3,"file":"types.d.ts","sourceRoot":"","sources":["../src/types.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,oBAAY,WAAW;IACrB,SAAS,cAAc;IACvB,OAAO,YAAY;IACnB,MAAM,WAAW;IACjB,OAAO,YAAY;IACnB,GAAG,QAAQ;CACZ;AAED;;;;;GAKG;AACH,wBAAgB,aAAa,CAAC,GAAG,EAAE,GAAG,GAAG,GAAG,IAAI,WAAW,CAE1D;AAED,oBAAY,eAAe;IACzB,OAAO,MAAM;IACb,MAAM,MAAM;IACZ,OAAO,aAAa;IACpB,SAAS,KAAK;IACd,GAAG,KAAK;CACT;AAED,oBAAY,cAAc;IACxB,OAAO,QAAQ;IACf,MAAM,cAAc;IACpB,OAAO,eAAe;IACtB,SAAS,KAAK;IACd,GAAG,KAAK;CACT;AAED,oBAAY,IAAI,GACZ,IAAI,GACJ,OAAO,GACP,MAAM,GACN,MAAM,GACN,IAAI,EAAE,GACN;IAAE,CAAC,IAAI,EAAE,MAAM,GAAG,IAAI,CAAA;CAAE,CAAC"}
+\ No newline at end of file
+diff --git a/dist/util.d.ts b/dist/util.d.ts
+index 4d646bc2e20187b27ceaa7f4065ff40d3a080bd0..c4dcfbcd1edf8fa397c1a2f1b48d26a0a41b03df 100644
+--- a/dist/util.d.ts
++++ b/dist/util.d.ts
+@@ -221,3 +221,4 @@ export declare function isNonEmptyArray<T>(value: T[]): value is NonEmptyArray<T
+  */
+ export declare function isValidJson(value: unknown): value is Json;
+ export {};
++//# sourceMappingURL=util.d.ts.map
+\ No newline at end of file
+diff --git a/dist/util.d.ts.map b/dist/util.d.ts.map
+new file mode 100644
+index 0000000000000000000000000000000000000000..0747efc4b9339ec8d6169fb5c6aa740cd60422d7
+--- /dev/null
++++ b/dist/util.d.ts.map
+@@ -0,0 +1 @@
++{"version":3,"file":"util.d.ts","sourceRoot":"","sources":["../src/util.ts"],"names":[],"mappings":"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"}
+\ No newline at end of file
