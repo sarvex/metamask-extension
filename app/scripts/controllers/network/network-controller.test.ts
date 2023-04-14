@@ -1148,7 +1148,7 @@ describe('NetworkController', () => {
               });
               expect(oldChainIdResult).toBe('0x1337');
 
-              controller.setProviderType(networkType);
+              await controller.setProviderType(networkType);
               const promisifiedSendAsync2 = promisify(provider.sendAsync).bind(
                 provider,
               );
@@ -2665,21 +2665,9 @@ describe('NetworkController', () => {
                 network1.mockEssentialRpcCalls({
                   eth_getBlockByNumber: {
                     beforeCompleting: async () => {
-                      await waitForPublishedEvents({
-                        messenger: unrestrictedMessenger,
-                        eventType: NetworkControllerEventType.NetworkDidChange,
-                        operation: async () => {
-                          await waitForStateChanges({
-                            controller,
-                            propertyPath: ['networkStatus'],
-                            operation: () => {
-                              controller.setProviderType(
-                                anotherNetwork.networkType,
-                              );
-                            },
-                          });
-                        },
-                      });
+                      await controller.setProviderType(
+                        anotherNetwork.networkType,
+                      );
                     },
                   },
                 });
@@ -3526,13 +3514,7 @@ describe('NetworkController', () => {
                   {
                     response: SUCCESSFUL_NET_VERSION_RESPONSE,
                     beforeCompleting: async () => {
-                      await waitForStateChanges({
-                        controller,
-                        propertyPath: ['networkStatus'],
-                        operation: () => {
-                          controller.setProviderType('goerli');
-                        },
-                      });
+                      await controller.setProviderType('goerli');
                     },
                   },
                 ],
@@ -3631,13 +3613,7 @@ describe('NetworkController', () => {
                     result: '111',
                   },
                   beforeCompleting: async () => {
-                    await waitForStateChanges({
-                      controller,
-                      propertyPath: ['networkStatus'],
-                      operation: () => {
-                        controller.setProviderType('goerli');
-                      },
-                    });
+                    await controller.setProviderType('goerli');
                   },
                 },
               });
@@ -3688,13 +3664,7 @@ describe('NetworkController', () => {
                 net_version: {
                   response: SUCCESSFUL_NET_VERSION_RESPONSE,
                   beforeCompleting: async () => {
-                    await waitForStateChanges({
-                      controller,
-                      propertyPath: ['networkDetails'],
-                      operation: () => {
-                        controller.setProviderType('goerli');
-                      },
-                    });
+                    await controller.setProviderType('goerli');
                   },
                 },
               });
@@ -3751,13 +3721,7 @@ describe('NetworkController', () => {
               network1.mockEssentialRpcCalls({
                 net_version: {
                   beforeCompleting: async () => {
-                    await waitForStateChanges({
-                      controller,
-                      propertyPath: ['networkDetails'],
-                      operation: () => {
-                        controller.setProviderType('goerli');
-                      },
-                    });
+                    await controller.setProviderType('goerli');
                   },
                 },
               });
@@ -3854,13 +3818,7 @@ describe('NetworkController', () => {
                       },
                     },
                     beforeCompleting: async () => {
-                      await waitForStateChanges({
-                        controller,
-                        propertyPath: ['networkStatus'],
-                        operation: () => {
-                          controller.setProviderType('goerli');
-                        },
-                      });
+                      await controller.setProviderType('goerli');
                     },
                   },
                 ],
@@ -3917,13 +3875,7 @@ describe('NetworkController', () => {
               network1.mockEssentialRpcCalls({
                 eth_getBlockByNumber: {
                   beforeCompleting: async () => {
-                    await waitForStateChanges({
-                      controller,
-                      propertyPath: ['networkStatus'],
-                      operation: () => {
-                        controller.setProviderType('goerli');
-                      },
-                    });
+                    await controller.setProviderType('goerli');
                   },
                 },
                 net_version: {
@@ -3978,13 +3930,7 @@ describe('NetworkController', () => {
                 latestBlock: POST_1559_BLOCK,
                 eth_getBlockByNumber: {
                   beforeCompleting: async () => {
-                    await waitForStateChanges({
-                      controller,
-                      propertyPath: ['networkDetails'],
-                      operation: () => {
-                        controller.setProviderType('goerli');
-                      },
-                    });
+                    await controller.setProviderType('goerli');
                   },
                 },
               });
@@ -4041,13 +3987,7 @@ describe('NetworkController', () => {
               network1.mockEssentialRpcCalls({
                 eth_getBlockByNumber: {
                   beforeCompleting: async () => {
-                    await waitForStateChanges({
-                      controller,
-                      propertyPath: ['networkDetails'],
-                      operation: () => {
-                        controller.setProviderType('goerli');
-                      },
-                    });
+                    await controller.setProviderType('goerli');
                   },
                 },
               });
@@ -4682,7 +4622,7 @@ describe('NetworkController', () => {
               });
               network.mockEssentialRpcCalls();
 
-              controller.setProviderType(networkType);
+              await controller.setProviderType(networkType);
 
               expect(
                 controller.store.getState().previousProviderStore,
@@ -4744,7 +4684,7 @@ describe('NetworkController', () => {
               });
               network.mockEssentialRpcCalls();
 
-              controller.setProviderType(networkType);
+              await controller.setProviderType(networkType);
 
               expect(controller.store.getState().provider).toStrictEqual({
                 type: networkType,
@@ -4777,6 +4717,8 @@ describe('NetworkController', () => {
                 messenger: unrestrictedMessenger,
                 eventType: NetworkControllerEventType.NetworkWillChange,
                 operation: () => {
+                  // Intentionally not awaited because we're capturing an event
+                  // emitted partway through the operation
                   controller.setProviderType(networkType);
                 },
               });
@@ -4829,6 +4771,8 @@ describe('NetworkController', () => {
                 // happens before networkDidChange
                 count: 1,
                 operation: () => {
+                  // Intentionally not awaited because we're checking the state
+                  // partway through the operation
                   controller.setProviderType(networkType);
                 },
               });
@@ -4882,6 +4826,8 @@ describe('NetworkController', () => {
                 // happens before networkDidChange
                 count: 1,
                 operation: () => {
+                  // Intentionally not awaited because we're checking the state
+                  // partway through the operation
                   controller.setProviderType(networkType);
                 },
               });
@@ -4901,7 +4847,7 @@ describe('NetworkController', () => {
             });
             network.mockEssentialRpcCalls();
 
-            controller.setProviderType(networkType);
+            await controller.setProviderType(networkType);
 
             const { provider } = controller.getProviderAndBlockTracker();
             assert(provider, 'Provider is somehow unset');
@@ -4928,7 +4874,7 @@ describe('NetworkController', () => {
 
             const { provider: providerBefore } =
               controller.getProviderAndBlockTracker();
-            controller.setProviderType(networkType);
+            await controller.setProviderType(networkType);
             const { provider: providerAfter } =
               controller.getProviderAndBlockTracker();
 
@@ -4951,8 +4897,8 @@ describe('NetworkController', () => {
               const networkDidChange = await waitForPublishedEvents({
                 messenger: unrestrictedMessenger,
                 eventType: NetworkControllerEventType.NetworkDidChange,
-                operation: () => {
-                  controller.setProviderType(networkType);
+                operation: async () => {
+                  await controller.setProviderType(networkType);
                 },
               });
 
@@ -4987,7 +4933,7 @@ describe('NetworkController', () => {
                 eventType: NetworkControllerEventType.InfuraIsBlocked,
               });
 
-              controller.setProviderType(networkType);
+              await controller.setProviderType(networkType);
 
               expect(await promiseForNoInfuraIsUnblockedEvents).toBeTruthy();
               expect(await promiseForInfuraIsBlocked).toBeTruthy();
@@ -5006,13 +4952,7 @@ describe('NetworkController', () => {
               latestBlock: BLOCK,
             });
 
-            await waitForStateChanges({
-              controller,
-              propertyPath: ['networkStatus'],
-              operation: () => {
-                controller.setProviderType(networkType);
-              },
-            });
+            await controller.setProviderType(networkType);
 
             expect(controller.store.getState().networkStatus).toBe('available');
           });
@@ -5036,16 +4976,7 @@ describe('NetworkController', () => {
                 latestBlock: POST_1559_BLOCK,
               });
 
-              await waitForStateChanges({
-                controller,
-                propertyPath: ['networkDetails'],
-                // setProviderType clears networkDetails first, and then updates
-                // it to what we expect it to be
-                count: 2,
-                operation: () => {
-                  controller.setProviderType(networkType);
-                },
-              });
+              await controller.setProviderType(networkType);
 
               expect(controller.store.getState().networkDetails).toStrictEqual({
                 EIPS: {
@@ -5061,7 +4992,7 @@ describe('NetworkController', () => {
     describe('given a type of "rpc"', () => {
       it('throws', async () => {
         await withController(async ({ controller }) => {
-          expect(() => controller.setProviderType('rpc')).toThrow(
+          await expect(() => controller.setProviderType('rpc')).rejects.toThrow(
             new Error(
               'NetworkController - cannot call "setProviderType" with type "rpc". Use "setActiveNetwork"',
             ),
@@ -5073,7 +5004,9 @@ describe('NetworkController', () => {
     describe('given an invalid Infura network name', () => {
       it('throws', async () => {
         await withController(async ({ controller }) => {
-          expect(() => controller.setProviderType('sadlflaksdj')).toThrow(
+          await expect(() =>
+            controller.setProviderType('sadlflaksdj'),
+          ).rejects.toThrow(
             new Error('Unknown Infura provider type "sadlflaksdj".'),
           );
         });
@@ -6504,12 +6437,7 @@ describe('NetworkController', () => {
             currentNetwork.mockEssentialRpcCalls();
             previousNetwork.mockEssentialRpcCalls();
 
-            await waitForLookupNetworkToComplete({
-              controller,
-              operation: () => {
-                controller.setProviderType('goerli');
-              },
-            });
+            await controller.setProviderType('goerli');
             expect(controller.store.getState().provider).toStrictEqual({
               type: 'goerli',
               rpcUrl: '',
@@ -6577,12 +6505,7 @@ describe('NetworkController', () => {
             });
             currentNetwork.mockEssentialRpcCalls();
             previousNetwork.mockEssentialRpcCalls();
-            await waitForLookupNetworkToComplete({
-              controller,
-              operation: () => {
-                controller.setProviderType('goerli');
-              },
-            });
+            await controller.setProviderType('goerli');
 
             await waitForLookupNetworkToComplete({
               controller,
@@ -6629,12 +6552,7 @@ describe('NetworkController', () => {
             currentNetwork.mockEssentialRpcCalls();
             previousNetwork.mockEssentialRpcCalls();
 
-            await waitForLookupNetworkToComplete({
-              controller,
-              operation: () => {
-                controller.setProviderType('goerli');
-              },
-            });
+            await controller.setProviderType('goerli');
             expect(controller.store.getState().networkStatus).toBe('available');
 
             await waitForLookupNetworkToComplete({
@@ -6688,12 +6606,7 @@ describe('NetworkController', () => {
             });
             previousNetwork.mockEssentialRpcCalls();
 
-            await waitForLookupNetworkToComplete({
-              controller,
-              operation: () => {
-                controller.setProviderType('goerli');
-              },
-            });
+            await controller.setProviderType('goerli');
             expect(controller.store.getState().networkDetails).toStrictEqual({
               EIPS: {
                 1559: true,
@@ -6752,12 +6665,7 @@ describe('NetworkController', () => {
             });
             currentNetwork.mockEssentialRpcCalls();
             previousNetwork.mockEssentialRpcCalls();
-            await waitForLookupNetworkToComplete({
-              controller,
-              operation: () => {
-                controller.setProviderType('goerli');
-              },
-            });
+            await controller.setProviderType('goerli');
 
             await waitForLookupNetworkToComplete({
               controller,
@@ -6807,12 +6715,7 @@ describe('NetworkController', () => {
             });
             currentNetwork.mockEssentialRpcCalls();
             previousNetwork.mockEssentialRpcCalls();
-            await waitForLookupNetworkToComplete({
-              controller,
-              operation: () => {
-                controller.setProviderType('goerli');
-              },
-            });
+            await controller.setProviderType('goerli');
 
             const { provider: providerBefore } =
               controller.getProviderAndBlockTracker();
@@ -6861,12 +6764,7 @@ describe('NetworkController', () => {
             currentNetwork.mockEssentialRpcCalls();
             previousNetwork.mockEssentialRpcCalls();
 
-            await waitForLookupNetworkToComplete({
-              controller,
-              operation: () => {
-                controller.setProviderType('goerli');
-              },
-            });
+            await controller.setProviderType('goerli');
 
             await waitForLookupNetworkToComplete({
               controller,
@@ -6916,12 +6814,7 @@ describe('NetworkController', () => {
             currentNetwork.mockEssentialRpcCalls();
             previousNetwork.mockEssentialRpcCalls();
 
-            await waitForLookupNetworkToComplete({
-              controller,
-              operation: () => {
-                controller.setProviderType('goerli');
-              },
-            });
+            await controller.setProviderType('goerli');
 
             await waitForLookupNetworkToComplete({
               controller,
@@ -6976,12 +6869,7 @@ describe('NetworkController', () => {
               },
             });
 
-            await waitForLookupNetworkToComplete({
-              controller,
-              operation: () => {
-                controller.setProviderType('goerli');
-              },
-            });
+            await controller.setProviderType('goerli');
             expect(controller.store.getState().networkStatus).toBe('available');
 
             await waitForLookupNetworkToComplete({
@@ -7026,12 +6914,7 @@ describe('NetworkController', () => {
               latestBlock: POST_1559_BLOCK,
             });
 
-            await waitForLookupNetworkToComplete({
-              controller,
-              operation: () => {
-                controller.setProviderType('goerli');
-              },
-            });
+            await controller.setProviderType('goerli');
             expect(controller.store.getState().networkDetails).toStrictEqual({
               EIPS: {
                 1559: false,
