@@ -1055,7 +1055,7 @@ export class NetworkController extends EventEmitter {
    * @throws if `rpcUrl` is not a valid URL.
    * @returns The ID for the added or updated network configuration.
    */
-  upsertNetworkConfiguration(
+  async upsertNetworkConfiguration(
     {
       rpcUrl,
       chainId,
@@ -1072,7 +1072,7 @@ export class NetworkController extends EventEmitter {
       referrer: string;
       source: string;
     },
-  ): NetworkConfigurationId {
+  ): Promise<NetworkConfigurationId> {
     assert.ok(
       isPrefixedFormattedHexString(chainId),
       `Invalid chain ID "${chainId}": invalid hex string.`,
@@ -1148,7 +1148,7 @@ export class NetworkController extends EventEmitter {
     }
 
     if (setActive) {
-      this.setActiveNetwork(newNetworkConfigurationId);
+      await this.setActiveNetwork(newNetworkConfigurationId);
     }
 
     return newNetworkConfigurationId;
