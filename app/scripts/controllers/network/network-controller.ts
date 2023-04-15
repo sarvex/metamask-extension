@@ -866,10 +866,10 @@ export class NetworkController extends EventEmitter {
    *
    * @param providerConfig - The provider configuration.
    */
-  #setProviderConfig(providerConfig: ProviderConfiguration): void {
+  async #setProviderConfig(providerConfig: ProviderConfiguration) {
     this.#previousProviderConfig = this.providerStore.getState();
     this.providerStore.putState(providerConfig);
-    this.#switchNetwork(providerConfig);
+    await this.#switchNetwork(providerConfig);
   }
 
   /**
