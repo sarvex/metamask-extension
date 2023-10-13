@@ -29,7 +29,6 @@ export default function FeeCard({
   numberOfQuotes,
   onQuotesClick,
   chainId,
-  isBestQuote,
 }) {
   const t = useContext(I18nContext);
   const useCurrencyRateCheck = useSelector(getUseCurrencyRateCheck);
@@ -50,9 +49,11 @@ export default function FeeCard({
       case CHAIN_IDS.AVALANCHE:
         return t('networkNameAvalanche');
       case CHAIN_IDS.OPTIMISM:
-        return t('networkNameOptimism');
+        return t('networkNameOpMainnet');
       case CHAIN_IDS.ARBITRUM:
         return t('networkNameArbitrum');
+      case CHAIN_IDS.ZKSYNC_ERA:
+        return t('networkNameZkSyncEra');
       default:
         throw new Error('This network is not supported for token swaps');
     }
@@ -167,9 +168,7 @@ export default function FeeCard({
                   onClick={onQuotesClick}
                   className="fee-card__quote-link-text"
                 >
-                  {isBestQuote
-                    ? t('swapBestOfNQuotes', [numberOfQuotes])
-                    : t('swapNQuotesWithDot', [numberOfQuotes])}
+                  {t('swapNQuotesWithDot', [numberOfQuotes])}
                 </span>
               )}
               {t('swapIncludesMMFee', [metaMaskFee])}
@@ -202,5 +201,4 @@ FeeCard.propTypes = {
   onQuotesClick: PropTypes.func.isRequired,
   numberOfQuotes: PropTypes.number.isRequired,
   chainId: PropTypes.string.isRequired,
-  isBestQuote: PropTypes.bool,
 };

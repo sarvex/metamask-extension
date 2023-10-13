@@ -1,14 +1,13 @@
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { ApprovalType } from '@metamask/controller-utils';
 ///: BEGIN:ONLY_INCLUDE_IN(build-mmi)
 import {
   getMmiPortfolioEnabled,
   getMmiPortfolioUrl,
-} from '@metamask-institutional/portfolio-dashboard';
+  getWaitForConfirmDeepLinkDialog,
+} from '../../selectors/institutional/selectors';
 import { mmiActionsFactory } from '../../store/institutional/institution-background';
-import { getWaitForConfirmDeepLinkDialog } from '../../selectors/institutional/selectors';
 import { getInstitutionalConnectRequests } from '../../ducks/institutional/institutional';
 ///: END:ONLY_INCLUDE_IN
 import {
@@ -35,7 +34,9 @@ import {
   getNewTokensImported,
   getShouldShowSeedPhraseReminder,
   getRemoveNftMessage,
-  hasPendingApprovals,
+  getSuggestedTokens,
+  getSuggestedNfts,
+  getApprovalFlows,
 } from '../../selectors';
 
 import {
@@ -53,9 +54,6 @@ import {
   setRemoveNftMessage,
   setNewTokensImported,
   setActiveNetwork,
-  ///: BEGIN:ONLY_INCLUDE_IN(snaps)
-  removeSnapError,
-  ///: END:ONLY_INCLUDE_IN
 } from '../../store/actions';
 import { hideWhatsNewPopup } from '../../ducks/app/app';
 import { getWeb3ShimUsageAlertEnabledness } from '../../ducks/metamask/metamask';
@@ -121,14 +119,14 @@ const mapStateToProps = (state) => {
     hasUnsignedQRHardwareTransaction(state) ||
     hasUnsignedQRHardwareMessage(state);
 
-  const hasWatchAssetPendingApprovals = hasPendingApprovals(
-    state,
-    ApprovalType.WatchAsset,
-  );
+  const hasWatchTokenPendingApprovals = getSuggestedTokens(state).length > 0;
+
+  const hasWatchNftPendingApprovals = getSuggestedNfts(state).length > 0;
 
   return {
     forgottenPassword,
-    hasWatchAssetPendingApprovals,
+    hasWatchTokenPendingApprovals,
+    hasWatchNftPendingApprovals,
     swapsEnabled,
     hasTransactionPendingApprovals: hasTransactionPendingApprovals(state),
     shouldShowSeedPhraseReminder: getShouldShowSeedPhraseReminder(state),
@@ -137,6 +135,8 @@ const mapStateToProps = (state) => {
     selectedAddress,
     firstPermissionsRequestId,
     totalUnapprovedCount,
+    hasApprovalFlows:
+      Array.isArray(getApprovalFlows) && getApprovalFlows(state).length > 0,
     connectedStatusPopoverHasBeenShown,
     defaultHomeActiveTabName,
     firstTimeFlowType,
@@ -150,10 +150,6 @@ const mapStateToProps = (state) => {
     pendingConfirmations,
     infuraBlocked: getInfuraBlocked(state),
     announcementsToShow: getSortedAnnouncementsToShow(state).length > 0,
-    ///: BEGIN:ONLY_INCLUDE_IN(snaps)
-    errorsToShow: metamask.snapErrors,
-    shouldShowErrors: Object.entries(metamask.snapErrors || []).length > 0,
-    ///: END:ONLY_INCLUDE_IN
     showWhatsNewPopup: getShowWhatsNewPopup(state),
     showRecoveryPhraseReminder: getShowRecoveryPhraseReminder(state),
     showTermsOfUsePopup: getShowTermsOfUse(state),
@@ -185,9 +181,6 @@ const mapDispatchToProps = (dispatch) => {
 
   return {
     closeNotificationPopup: () => closeNotificationPopup(),
-    ///: BEGIN:ONLY_INCLUDE_IN(snaps)
-    removeSnapError: async (id) => await removeSnapError(id),
-    ///: END:ONLY_INCLUDE_IN
     setConnectedStatusPopoverHasBeenShown: () =>
       dispatch(setConnectedStatusPopoverHasBeenShown()),
     onTabClick: (name) => dispatch(setDefaultHomeActiveTabName(name)),
