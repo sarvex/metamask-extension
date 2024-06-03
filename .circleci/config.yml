@@ -21,7 +21,7 @@ executors:
       - image: koalaman/shellcheck-alpine@sha256:dfaf08fab58c158549d3be64fb101c626abc5f16f341b569092577ae207db199
 
 orbs:
-  gh: circleci/github-cli@2.0
+  gh: circleci/github-cli@2.0.0
   codecov: codecov/codecov@3.2.2
 
 rc_branch_only: &rc_branch_only
